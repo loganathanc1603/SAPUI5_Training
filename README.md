@@ -1,4 +1,5 @@
 SAPUI5 Fiori Development Syllabus
+
 03.04.2020  SAPUI5 Overview
 1.	SAPUI5 – Framework VS FIORI- Methodology.
 2.	Prerequisite HTML5, CSS, JavaScript, OData basic concept.
