@@ -23,9 +23,13 @@ SAPUI5 and Fiori Development Syllabus
 6.	Methods of the any sap control
 
 08.04.2020 Filtering & Sorting Binding Context
-1.	Filtering
-2.	Sorting
-3.	Important table properties
-4.	Context of the model
-5.	Fragment basic
+1.	Different controls like ObjectIdentifier ObjectStats ObjectNumber
+2.	Filtering
+3.	Sorting
+4.	Important table properties
+5.	Table responsiveness properties and values
+6.	Context of the model
+7.	Fragment basic
+
+
 

@@ -43,15 +43,27 @@
 							<Column>
 								<Text text="Supplier Name"/>
 							</Column>
+							<Column>
+								<Text text="Status"/>
+							</Column>
+							<Column>
+								<Text text="Quantity"/>
+							</Column>
+							<Column>
+								<Text text="Price"/>
+							</Column>
 						</columns>
 						<!--items table aggregation-->
 						<items>
 							<ColumnListItem>
 								<cells>
-									<Text text="{Product>ProductId}"/>
+									<ObjectIdentifier title="{Product>ProductId}"/>
 									<Text text="{Product>Name}"/>
 									<Text text="{Product>MainCategory}"/>
 									<Text text="{Product>SupplierName}"/>
+									<ObjectStatus text="{Product>Status}" state="Success"/>
+									<ObjectNumber number="{Product>Quantity}"/>
+									<ObjectNumber number="{Product>Price}" unit="{Product>CurrencyCode}"/>
 								</cells>
 							</ColumnListItem>
 						</items>
