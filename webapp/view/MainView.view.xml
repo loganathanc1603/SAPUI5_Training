@@ -14,7 +14,7 @@
 							<Text text="{Product>/ProductDetails/Name}"/>
 							<Label text="Main Category"/>
 							<Text text="{Product>/ProductDetails/MainCategory}"/>
-							<Label text="Supplier Name"/>
+							<Label text="{i18n>supplierName}"/>
 							<Text text="{Product>/ProductDetails/SupplierName}"/>
 						</f:content>
 					</f:SimpleForm>
