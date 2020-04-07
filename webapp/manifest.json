@@ -75,7 +75,8 @@
 				"viewPath": "com.ui5.SAPUI5_Session.view",
 				"controlAggregation": "pages",
 				"controlId": "idAppControl",
-				"clearControlAggregation": false
+				"clearControlAggregation": false,
+				"viewLevel": 1
 			},
 			"routes": [{
 				"name": "RouteMainView",
