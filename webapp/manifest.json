@@ -14,7 +14,6 @@
 			"version": "1.38.11"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -30,13 +29,8 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize"]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "com.ui5.SAPUI5_Session.view.MainView",
@@ -60,6 +54,12 @@
 				"settings": {
 					"bundleName": "com.ui5.SAPUI5_Session.i18n.i18n"
 				}
+			},
+			"Product": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "model/Products.json",
+				"preload": false
 			}
 		},
 		"resources": {

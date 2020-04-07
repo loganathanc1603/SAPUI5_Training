@@ -1,9 +1,55 @@
 <mvc:View controllerName="com.ui5.SAPUI5_Session.controller.MainView" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
-	displayBlock="true" xmlns="sap.m">
+	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 	<App id="idAppControl">
 		<pages>
 			<Page title="{i18n>title}">
-				<content></content>
+				<content>
+					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Products">
+						<f:content>
+							<Label text="{i18n>productId}"/>
+							<Text text="{Product>/ProductDetails/ProductId}"/>
+							<Label text="Name"/>
+							<Text text="{Product>/ProductDetails/Name}"/>
+							<Label text="Main Category"/>
+							<Text text="{Product>/ProductDetails/MainCategory}"/>
+							<Label text="Supplier Name"/>
+							<Text text="{Product>/ProductDetails/SupplierName}"/>
+						</f:content>
+					</f:SimpleForm>
+					<Table items="{Product>/ProductCollection}" growing="true" growingThreshold="50">
+						<headerToolbar>
+							<Toolbar>
+								<content>
+									<Title text="Products" level="H2"/>
+								</content>
+							</Toolbar>
+						</headerToolbar>
+						<columns>
+							<Column width="12em">
+								<Text text="Product"/>
+							</Column>
+							<Column>
+								<Text text="Name"/>
+							</Column>
+							<Column>
+								<Text text="Main Categoery"/>
+							</Column>
+							<Column>
+								<Text text="Supplier Name"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem>
+								<cells>
+									<Text text="{Product>ProductId}"/>
+									<Text text="{Product>Name}"/>
+									<Text text="{Product>MainCategory}"/>
+									<Text text="{Product>SupplierName}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
 			</Page>
 		</pages>
 	</App>
