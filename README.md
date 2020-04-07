@@ -6,6 +6,12 @@ https://sapui5.hana.ondemand.com/
 SAPWebIDE URL:
 https://account.hana.ondemand.com/#/home/welcome
 
+Demokit URL:
+https://sapui5.hana.ondemand.com/
+
+SAPWebIDE URL:
+https://account.hana.ondemand.com/#/home/welcome
+
 03.04.2020  SAPUI5 Overview
 1.	SAPUI5 – Framework VS FIORI- Methodology.
 2.	Prerequisite HTML5, CSS, JavaScript, OData basic concept.
