@@ -19,3 +19,10 @@ SAPUI5 Fiori Development Syllabus
 4.	Data Binding
 5.	Basic events of sap control
 6.	Methods of the any sap control
+08.04.2020 Filtering & Sorting Binding Context
+1.	Filtering
+2.	Sorting
+3.	Important table properties
+4.	Context of the model
+5.	Fragment basic
+
