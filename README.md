@@ -1,4 +1,5 @@
 SAPUI5 Fiori Development Syllabus
+
 03.04.2020  SAPUI5 Overview
 1.	SAPUI5 – Framework VS FIORI- Methodology.
 2.	Prerequisite HTML5, CSS, JavaScript, OData basic concept.
@@ -12,6 +13,7 @@ SAPUI5 Fiori Development Syllabus
 4.	Concept of index.html in SAPUI5.
 5.	Model - View - Controller Concept in SAPUI5.
 6.	JavaScript: Object & Array & JSON
+
 07.04.2020 Model Basic
 1.	JSONModel
 2.	ResourceModel
