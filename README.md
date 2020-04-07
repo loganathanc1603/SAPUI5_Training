@@ -1,4 +1,9 @@
 SAPUI5 and Fiori Development Syllabus
+Demokit URL:
+https://sapui5.hana.ondemand.com/
+
+SAPWebIDE URL:
+https://account.hana.ondemand.com/#/home/welcome
 
 03.04.2020  SAPUI5 Overview
 1.	SAPUI5 – Framework VS FIORI- Methodology.
