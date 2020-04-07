@@ -2,9 +2,11 @@
 	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 	<App id="idAppControl">
 		<pages>
+			<!-- Example of resourcebundle binding using i18n resource model -->
 			<Page title="{i18n>title}">
 				<content>
-					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Products">
+					<!-- Example for property binding using json model-->
+					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Product Information">
 						<f:content>
 							<Label text="{i18n>productId}"/>
 							<Text text="{Product>/ProductDetails/ProductId}"/>
@@ -16,7 +18,9 @@
 							<Text text="{Product>/ProductDetails/SupplierName}"/>
 						</f:content>
 					</f:SimpleForm>
+					<!-- Example for aggreagation binding using jsonmodel-->
 					<Table items="{Product>/ProductCollection}" growing="true" growingThreshold="50">
+						<!--headerToolber table aggreagation-->
 						<headerToolbar>
 							<Toolbar>
 								<content>
@@ -24,11 +28,13 @@
 								</content>
 							</Toolbar>
 						</headerToolbar>
+						<!--columns table aggreagtion-->
 						<columns>
-							<Column width="12em">
+							<Column>
 								<Text text="Product"/>
 							</Column>
-							<Column>
+							<!-- demandPopin true enable the responsiveness for mobile and tablet. for this need to define the minScreenWidth -->
+							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
 								<Text text="Name"/>
 							</Column>
 							<Column>
@@ -38,6 +44,7 @@
 								<Text text="Supplier Name"/>
 							</Column>
 						</columns>
+						<!--items table aggregation-->
 						<items>
 							<ColumnListItem>
 								<cells>
