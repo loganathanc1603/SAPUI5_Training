@@ -1,4 +1,4 @@
-SAPUI5 Fiori Development Syllabus
+SAPUI5 and Fiori Development Syllabus
 
 03.04.2020  SAPUI5 Overview
 1.	SAPUI5 – Framework VS FIORI- Methodology.
