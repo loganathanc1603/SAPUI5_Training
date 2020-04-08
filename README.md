@@ -29,13 +29,13 @@ https://account.hana.ondemand.com/#/home/welcome
 6.	Methods of the any sap control
 
 08.04.2020 Filtering & Sorting Binding Context
-1.	Different controls like ObjectIdentifier ObjectStats ObjectNumber
+1.	Different controls like ObjectIdentifier ObjectStatus ObjectNumber
 2.	Filtering
 3.	Sorting
-4.	Important table properties
-5.	Table responsiveness properties and values
-6.	Context of the model
-7.	Fragment basic
+4.	Important table properties: alternaterows growing mode selection change
+5.	Table responsiveness properties and values: demandPopin
+6.	Context of the model: BindingContext
+7.	Fragment basic: 
 
 
 

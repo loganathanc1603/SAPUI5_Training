@@ -9,7 +9,7 @@
 					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Product Information">
 						<f:content>
 							<Label text="{i18n>productId}" design="Bold"/>
-							<Text text="{Product>/ProductDetails/ProductId}"/>
+							<Text id="idTxt" text="{Product>/ProductDetails/ProductId}"/>
 							<Label text="Name" design="Bold"/>
 							<Text text="{Product>/ProductDetails/Name}"/>
 							<Label text="Main Category" design="Bold"/>
@@ -19,12 +19,15 @@
 						</f:content>
 					</f:SimpleForm>
 					<!-- Example for aggreagation binding using jsonmodel-->
-					<Table items="{Product>/ProductCollection}" growing="true" growingThreshold="50">
+					<Table id="mTblPrdId" items="{Product>/ProductCollection}" growing="true" growingThreshold="50" alternateRowColors="true">
 						<!--headerToolber table aggreagation-->
 						<headerToolbar>
 							<Toolbar>
 								<content>
 									<Title text="Products" level="H2"/>
+									<ToolbarSpacer/>
+									<Button icon="sap-icon://sort" press="onPrsSortProducts" tooltip="Sort the products"/>
+									<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>
 								</content>
 							</Toolbar>
 						</headerToolbar>
@@ -37,10 +40,10 @@
 							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
 								<Text text="Name"/>
 							</Column>
-							<Column>
+							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
 								<Text text="Main Categoery"/>
 							</Column>
-							<Column>
+							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
 								<Text text="Supplier Name"/>
 							</Column>
 							<Column>
@@ -49,15 +52,15 @@
 							<Column>
 								<Text text="Quantity"/>
 							</Column>
-							<Column>
+							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
 								<Text text="Price"/>
 							</Column>
 						</columns>
 						<!--items table aggregation-->
 						<items>
-							<ColumnListItem>
+							<ColumnListItem type="Navigation" press="onPrsNavProduct">
 								<cells>
-									<ObjectIdentifier title="{Product>ProductId}"/>
+									<ObjectIdentifier text="{Product>DateOfSale}" title="{Product>ProductId}"/>
 									<Text text="{Product>Name}"/>
 									<Text text="{Product>MainCategory}"/>
 									<Text text="{Product>SupplierName}"/>
