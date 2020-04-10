@@ -44,9 +44,64 @@ sap.ui.define([
 			oBinding.sort(oSorter);
 		},
 
+		//function for opening the dialog
+		onPrsSortDialog: function () {
+			//checking already dialog has assigned for this variable if yes just open the dialog
+			if (!this._oSortDialog) {
+				//defining the fragment dialog to the variable
+				this._oSortDialog = sap.ui.xmlfragment("com.ui5.SAPUI5_Session.fragments.SortDialog", this);
+			}
+			//adding the dependent of the view for dialog
+			this.getView().addDependent(this._oSortDialog);
+			//open() method to open the desired dialog
+			this._oSortDialog.open();
+		},
+
+		//function for sorting with view setting dialog
+		onConfirmSorting: function (oEvent) {
+			var oTable = this.byId("mTblPrdId"),
+				mParams = oEvent.getParameters(),
+				oBinding = oTable.getBinding("items"),
+				sPath,
+				bDescending,
+				aSorters = [];
+			//Getting a defined key
+			sPath = mParams.sortItem.getKey();
+			//Getting the desc or asc from the control
+			bDescending = mParams.sortDescending;
+			//Push the values to array
+			aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
+			// apply the selected sort settings
+			oBinding.sort(aSorters);
+		},
+
 		//function for navigation
-		onPrsNavProduct: function (evt) {
-			var Obj = evt.getSource().getBindingContext("Product").getObject();
+		onPrsNavProduct: function (oEvent) {
+			//getting the current object using getBindingContext method
+			var Obj = oEvent.getSource().getBindingContext("Product").getObject();
+			var oSelectedItem = oEvent.getSource();
+			var oContext = oSelectedItem.getBindingContext("Product");
+			var sPath = oContext.getPath();
+
+			if (!this._oProductDialog) {
+				this._oProductDialog = sap.ui.xmlfragment("com.ui5.SAPUI5_Session.fragments.ProductDetailDialog", this);
+			}
+			this.getView().addDependent(this._oProductDialog);
+			//Setting the value by means of control function
+			sap.ui.getCore().byId("txtProductId").setText(Obj.ProductId);
+			//Element binding to set the values to dialog
+			sap.ui.getCore().byId("sFmPrdtId").bindElement({
+				path: sPath,
+				model: "Product"
+			});
+			this._oProductDialog.open();
+		},
+
+		//function for closeing the dialog
+		fnOnClsePrdDia: function () {
+			if (this._oProductDialog) {
+				this._oProductDialog.close();
+			}
 		}
 	});
 });

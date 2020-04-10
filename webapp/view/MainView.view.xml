@@ -1,5 +1,5 @@
 <mvc:View controllerName="com.ui5.SAPUI5_Session.controller.MainView" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
+	xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 	<App id="idAppControl">
 		<pages>
 			<!-- Example of resourcebundle binding using i18n resource model -->
@@ -26,7 +26,7 @@
 								<content>
 									<Title text="Products" level="H2"/>
 									<ToolbarSpacer/>
-									<Button icon="sap-icon://sort" press="onPrsSortProducts" tooltip="Sort the products"/>
+									<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
 									<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>
 								</content>
 							</Toolbar>
@@ -71,6 +71,32 @@
 							</ColumnListItem>
 						</items>
 					</Table>
+					<t:Table id="uiTblProduct" rows="{Product>/ProductCollection}">
+						<t:columns>
+							<t:Column sortProperty="ProductId" filterProperty="ProductId">
+								<Text text="Product Id"/>
+								<t:template>
+									<Text text="{Product>ProductId}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+						<t:columns>
+							<t:Column>
+								<Text text="Product Name"/>
+								<t:template>
+									<Text text="{Product>Name}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+						<t:columns>
+							<t:Column>
+								<Text text="Main Category"/>
+								<t:template>
+									<Text text="{Product>MainCategory}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+					</t:Table>
 				</content>
 			</Page>
 		</pages>

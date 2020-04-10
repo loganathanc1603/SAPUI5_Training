@@ -35,7 +35,14 @@ https://account.hana.ondemand.com/#/home/welcome
 4.	Important table properties: alternaterows growing mode selection change
 5.	Table responsiveness properties and values: demandPopin
 6.	Context of the model: BindingContext
-7.	Fragment basic: 
+7.	Fragment basic
 
-
+09.04.2020 Fragment Creation
+1.	Creation of fragment
+2.	Element binding 
+3.	Viewsetting dialog for sorting the table
+4.	Introduction to the sap.ui.table
+5.	Creation of sap.ui.table
+6.	sap.ui.table properties and events
+7.	difference between sap.m.table vs sap.ui.table
 

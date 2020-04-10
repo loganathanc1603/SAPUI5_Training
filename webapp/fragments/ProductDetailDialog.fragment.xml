@@ -1,0 +1,29 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:l="sap.ui.layout" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog title="Product Details" contentHeight="90%" contentWidth="70%">
+		<f:SimpleForm id="sFmPrdtId" title="Product {Product>ProductId}" editable="true" layout="ResponsiveGridLayout">
+			<f:content>
+				<Label text="Product Id"/>
+				<Text id="txtProductId"/>
+				<Label text="Product Name"/>
+				<Text text="{Product>Name}"/>
+				<Label text="Category"/>
+				<Text text="{Product>Category}"/>
+				<Label text="MainCategory"/>
+				<Text text="{Product>MainCategory}"/>
+				<Label text="TaxTarifCode"/>
+				<Text text="{Product>TaxTarifCode}"/>
+				<Label text="SupplierName"/>
+				<Text text="{Product>SupplierName}"/>
+				<Label text="WeightMeasure"/>
+				<Text text="{Product>WeightMeasure} {Product>WeightUnit}"/>
+				<Label text="Description"/>
+				<Text text="{Product>Description}"/>
+				<Label text="DateOfSale"/>
+				<Text text="{Product>DateOfSale}"/>
+			</f:content>
+		</f:SimpleForm>
+		<endButton>
+			<Button text="Close" press="fnOnClsePrdDia"/>
+		</endButton>
+	</Dialog>
+</core:FragmentDefinition>
