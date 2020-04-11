@@ -1,9 +1,12 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function (Controller) {
+	"sap/ui/core/mvc/Controller",
+	"sap/m/MessageBox",
+	"com/ui5/SAPUI5_Session/model/formatter"
+], function (Controller, MessageBox, formatter) {
 	"use strict";
 
 	return Controller.extend("com.ui5.SAPUI5_Session.controller.MainView", {
+		formatter: formatter,
 		onInit: function () {
 			//Creating a jsonmodel
 			var jmodel = new sap.ui.model.json.JSONModel();
@@ -64,15 +67,43 @@ sap.ui.define([
 				oBinding = oTable.getBinding("items"),
 				sPath,
 				bDescending,
-				aSorters = [];
+				aSorters = [],
+				aGroups = [];
 			//Getting a defined key
 			sPath = mParams.sortItem.getKey();
 			//Getting the desc or asc from the control
 			bDescending = mParams.sortDescending;
 			//Push the values to array
 			aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
-			// apply the selected sort settings
+			//apply the selected sort settings
 			oBinding.sort(aSorters);
+
+			//Grouping
+			var oGroup = {
+				SupplierName: function (oContext) {
+					var name = oContext.getProperty("SupplierName");
+					return {
+						key: name,
+						text: name
+					};
+				},
+				MainCategory: function (oContext) {
+					var name = oContext.getProperty("MainCategory");
+					return {
+						key: name,
+						text: name
+					};
+				}
+			};
+
+			//checking the grouping field
+			if (mParams.groupItem) {
+				sPath = mParams.groupItem.getKey();
+				bDescending = mParams.groupDescending;
+				aGroups.push(new sap.ui.model.Sorter(sPath, bDescending, oGroup[sPath]));
+				// apply the selected group settings
+				oBinding.sort(aGroups);
+			}
 		},
 
 		//function for navigation
@@ -101,6 +132,31 @@ sap.ui.define([
 		fnOnClsePrdDia: function () {
 			if (this._oProductDialog) {
 				this._oProductDialog.close();
+			}
+		},
+
+		// function for messagebox
+		onPrsBtnMsgBox: function () {
+			var msg = this.formatter.setCapitalValue("Test message box");
+			//simple message box
+			MessageBox.show(msg, MessageBox.Icon.SUCCESS, "Title");
+
+			//message box with functions
+			if (!msg) {
+				MessageBox.show(
+					"This message should appear in the message box.", {
+						icon: MessageBox.Icon.SUCCESS,
+						title: "My message box title",
+						actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+						emphasizedAction: MessageBox.Action.YES,
+						onClose: function (oAction) {
+							//do somthing
+							if (oAction === "NO") {
+								sap.m.MessageToast.show("MessageBox Close event triggered.");
+							}
+						}
+					}
+				);
 			}
 		}
 	});

@@ -16,10 +16,20 @@
 							<Text text="{Product>/ProductDetails/MainCategory}"/>
 							<Label text="{i18n>supplierName}" design="Bold"/>
 							<Text text="{Product>/ProductDetails/SupplierName}"/>
+							<Label text="Input Suggestions" design="Bold"/>
+							<Input showSuggestion="true" suggestionItems="{Product>/ProductCollection}">
+								<layoutData>
+									<l:GridData span="XL2 L3 M4 S12"/>
+								</layoutData>
+								<suggestionItems>
+									<core:Item text="{Product>Name}"/>
+								</suggestionItems>
+							</Input>
 						</f:content>
 					</f:SimpleForm>
 					<!-- Example for aggreagation binding using jsonmodel-->
-					<Table id="mTblPrdId" items="{Product>/ProductCollection}" growing="true" growingThreshold="50" alternateRowColors="true">
+					<Table id="mTblPrdId" items="{Product>/ProductCollection}" growing="true" growingThreshold="50" alternateRowColors="true"
+						class="custCssClass">
 						<!--headerToolber table aggreagation-->
 						<headerToolbar>
 							<Toolbar>
@@ -62,10 +72,11 @@
 								<cells>
 									<ObjectIdentifier text="{Product>DateOfSale}" title="{Product>ProductId}"/>
 									<Text text="{Product>Name}"/>
-									<Text text="{Product>MainCategory}"/>
+									<ObjectStatus text="{path:'Product>MainCategory', formatter:'.formatter.setCapitalValue'}"
+										state="{path:'Product>MainCategory', formatter:'.formatter.getStatusOfMain'}"/>
 									<Text text="{Product>SupplierName}"/>
 									<ObjectStatus text="{Product>Status}" state="Success"/>
-									<ObjectNumber number="{Product>Quantity}"/>
+									<ObjectNumber number="{Product>Quantity}" state="{path:'Product>Quantity', formatter:'.formatter.getStatusOfQnty'}"/>
 									<ObjectNumber number="{Product>Price}" unit="{Product>CurrencyCode}"/>
 								</cells>
 							</ColumnListItem>
@@ -96,8 +107,38 @@
 								</t:template>
 							</t:Column>
 						</t:columns>
+						<t:columns>
+							<t:Column>
+								<Text text="Supplier Name"/>
+								<t:template>
+									<Text text="{Product>SupplierName}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+						<t:columns>
+							<t:Column>
+								<Text text="WeightMeasure"/>
+								<t:template>
+									<ObjectNumber number="{Product>WeightMeasure}" unit="{Product>WeightUnit}"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
+						<t:columns>
+							<t:Column>
+								<Text text="Status"/>
+								<t:template>
+									<Text text="{Product>Status}" wrapping="false"/>
+								</t:template>
+							</t:Column>
+						</t:columns>
 					</t:Table>
 				</content>
+				<footer>
+					<Toolbar>
+						<ToolbarSpacer/>
+						<Button text="Footer Button" type="Accept" press="onPrsBtnMsgBox"/>
+					</Toolbar>
+				</footer>
 			</Page>
 		</pages>
 	</App>

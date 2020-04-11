@@ -46,3 +46,13 @@ https://account.hana.ondemand.com/#/home/welcome
 6.	sap.ui.table properties and events
 7.	difference between sap.m.table vs sap.ui.table
 
+11.04.2020 
+1.	Grouping
+2.	Using Predefined CSS Margin Classes
+3.	Page Footer and Different page: semantic page dynamic page
+4.	MessageBox use and its properties
+5.	formatter: use of formatter
+6.	Input field with suggestions
+7.	Device API
+
+
