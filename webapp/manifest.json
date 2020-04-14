@@ -33,7 +33,8 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "com.ui5.SAPUI5_Session.view.MainView",
+			"viewName": "com.ui5.SAPUI5_Session.view.App",
+			"id": "mAppId",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -74,21 +75,56 @@
 				"async": true,
 				"viewPath": "com.ui5.SAPUI5_Session.view",
 				"controlAggregation": "pages",
-				"controlId": "idAppControl",
+				"controlId": "mAppId",
 				"clearControlAggregation": false,
-				"viewLevel": 1
+				"viewLevel": 1,
+				"bypassed": {
+					"target": []
+				}
 			},
 			"routes": [{
-				"name": "RouteMainView",
-				"pattern": "RouteMainView",
-				"target": ["TargetMainView"]
+				"name": "MainView",
+				"pattern": "",
+				"target": ["MainView"]
+			}, {
+				"name": "SecondView",
+				"pattern": "SecondView/{Obj}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["SecondView"]
+			}, {
+				"name": "ThirdView",
+				"pattern": "Third",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["ThirdView"]
 			}],
 			"targets": {
-				"TargetMainView": {
+				"MainView": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
-					"viewName": "MainView"
+					"viewName": "MainView",
+					"viewId": "MainView",
+					"viewLevel": 1,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
+				},
+				"SecondView": {
+					"viewType": "XML",
+					"viewName": "SecondView",
+					"viewId": "SecondView",
+					"viewLevel": 2,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
+				},
+				"ThirdView": {
+					"viewType": "XML",
+					"viewName": "ThirdView",
+					"viewId": "ThirdView",
+					"viewLevel": 3,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
 				}
 			}
 		}

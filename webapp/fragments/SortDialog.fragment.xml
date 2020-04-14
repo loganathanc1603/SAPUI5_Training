@@ -6,5 +6,9 @@
 			<ViewSettingsItem text="Main Category" key="MainCategory"/>
 			<ViewSettingsItem text="Supplier Name" key="SupplierName"/>
 		</sortItems>
+		<groupItems>
+			<ViewSettingsItem text="Supplier" key="SupplierName"/>
+			<ViewSettingsItem text="Main Category" key="MainCategory"/>
+		</groupItems>
 	</ViewSettingsDialog>
 </core:FragmentDefinition>

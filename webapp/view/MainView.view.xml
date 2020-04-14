@@ -1,104 +1,147 @@
 <mvc:View controllerName="com.ui5.SAPUI5_Session.controller.MainView" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
-	<App id="idAppControl">
-		<pages>
-			<!-- Example of resourcebundle binding using i18n resource model -->
-			<Page title="{i18n>title}">
-				<content>
-					<!-- Example for property binding using json model-->
-					<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Product Information">
-						<f:content>
-							<Label text="{i18n>productId}" design="Bold"/>
-							<Text id="idTxt" text="{Product>/ProductDetails/ProductId}"/>
-							<Label text="Name" design="Bold"/>
-							<Text text="{Product>/ProductDetails/Name}"/>
-							<Label text="Main Category" design="Bold"/>
-							<Text text="{Product>/ProductDetails/MainCategory}"/>
-							<Label text="{i18n>supplierName}" design="Bold"/>
-							<Text text="{Product>/ProductDetails/SupplierName}"/>
-						</f:content>
-					</f:SimpleForm>
-					<!-- Example for aggreagation binding using jsonmodel-->
-					<Table id="mTblPrdId" items="{Product>/ProductCollection}" growing="true" growingThreshold="50" alternateRowColors="true">
-						<!--headerToolber table aggreagation-->
-						<headerToolbar>
-							<Toolbar>
-								<content>
-									<Title text="Products" level="H2"/>
-									<ToolbarSpacer/>
-									<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
-									<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>
-								</content>
-							</Toolbar>
-						</headerToolbar>
-						<!--columns table aggreagtion-->
-						<columns>
-							<Column>
-								<Text text="Product"/>
-							</Column>
-							<!-- demandPopin true enable the responsiveness for mobile and tablet. for this need to define the minScreenWidth -->
-							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-								<Text text="Name"/>
-							</Column>
-							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-								<Text text="Main Categoery"/>
-							</Column>
-							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-								<Text text="Supplier Name"/>
-							</Column>
-							<Column>
-								<Text text="Status"/>
-							</Column>
-							<Column>
-								<Text text="Quantity"/>
-							</Column>
-							<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-								<Text text="Price"/>
-							</Column>
-						</columns>
-						<!--items table aggregation-->
-						<items>
-							<ColumnListItem type="Navigation" press="onPrsNavProduct">
-								<cells>
-									<ObjectIdentifier text="{Product>DateOfSale}" title="{Product>ProductId}"/>
-									<Text text="{Product>Name}"/>
-									<Text text="{Product>MainCategory}"/>
-									<Text text="{Product>SupplierName}"/>
-									<ObjectStatus text="{Product>Status}" state="Success"/>
-									<ObjectNumber number="{Product>Quantity}"/>
-									<ObjectNumber number="{Product>Price}" unit="{Product>CurrencyCode}"/>
-								</cells>
-							</ColumnListItem>
-						</items>
-					</Table>
-					<t:Table id="uiTblProduct" rows="{Product>/ProductCollection}">
-						<t:columns>
-							<t:Column sortProperty="ProductId" filterProperty="ProductId">
-								<Text text="Product Id"/>
-								<t:template>
-									<Text text="{Product>ProductId}" wrapping="false"/>
-								</t:template>
-							</t:Column>
-						</t:columns>
-						<t:columns>
-							<t:Column>
-								<Text text="Product Name"/>
-								<t:template>
-									<Text text="{Product>Name}" wrapping="false"/>
-								</t:template>
-							</t:Column>
-						</t:columns>
-						<t:columns>
-							<t:Column>
-								<Text text="Main Category"/>
-								<t:template>
-									<Text text="{Product>MainCategory}" wrapping="false"/>
-								</t:template>
-							</t:Column>
-						</t:columns>
-					</t:Table>
-				</content>
-			</Page>
-		</pages>
-	</App>
+	<!--<App id="idAppControl">-->
+	<!--	<pages>-->
+	<!-- Example of resourcebundle binding using i18n resource model -->
+	<Page title="{i18n>title}">
+		<content>
+			<!-- Example for property binding using json model-->
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Product Information">
+				<f:content>
+					<Label text="{i18n>productId}" design="Bold"/>
+					<Text id="idTxt" text="{Product>/ProductDetails/ProductId}"/>
+					<Label text="Name" design="Bold"/>
+					<Text text="{Product>/ProductDetails/Name}"/>
+					<Label text="Main Category" design="Bold"/>
+					<Text text="{Product>/ProductDetails/MainCategory}"/>
+					<Label text="{i18n>supplierName}" design="Bold"/>
+					<Text text="{Product>/ProductDetails/SupplierName}"/>
+					<Label text="Input Suggestions" design="Bold"/>
+					<Input showSuggestion="true" suggestionItems="{Product>/ProductCollection}">
+						<layoutData>
+							<l:GridData span="XL2 L3 M4 S12"/>
+						</layoutData>
+						<suggestionItems>
+							<core:Item text="{Product>Name}"/>
+						</suggestionItems>
+					</Input>
+				</f:content>
+			</f:SimpleForm>
+			<!-- Example for aggreagation binding using jsonmodel-->
+			<Table id="mTblPrdId" items="{Product>/ProductCollection}" growing="true" growingThreshold="50" alternateRowColors="true"
+				class="custCssClass">
+				<!--headerToolber table aggreagation-->
+				<headerToolbar>
+					<Toolbar>
+						<content>
+							<Title text="Products" level="H2"/>
+							<ToolbarSpacer/>
+							<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
+							<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>
+						</content>
+					</Toolbar>
+				</headerToolbar>
+				<!--columns table aggreagtion-->
+				<columns>
+					<Column>
+						<Text text="Product"/>
+					</Column>
+					<!-- demandPopin true enable the responsiveness for mobile and tablet. for this need to define the minScreenWidth -->
+					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
+						<Text text="Name"/>
+					</Column>
+					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
+						<Text text="Main Categoery"/>
+					</Column>
+					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
+						<Text text="Supplier Name"/>
+					</Column>
+					<Column>
+						<Text text="Status"/>
+					</Column>
+					<Column>
+						<Text text="Quantity"/>
+					</Column>
+					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
+						<Text text="Price"/>
+					</Column>
+				</columns>
+				<!--items table aggregation-->
+				<items>
+					<ColumnListItem type="Navigation" press="onPrsNavProduct">
+						<cells>
+							<ObjectIdentifier text="{Product>DateOfSale}" title="{Product>ProductId}"/>
+							<Text text="{Product>Name}"/>
+							<ObjectStatus text="{path:'Product>MainCategory', formatter:'.formatter.setCapitalValue'}"
+								state="{path:'Product>MainCategory', formatter:'.formatter.getStatusOfMain'}"/>
+							<Text text="{Product>SupplierName}"/>
+							<ObjectStatus text="{Product>Status}" state="Success"/>
+							<ObjectNumber number="{Product>Quantity}" state="{path:'Product>Quantity', formatter:'.formatter.getStatusOfQnty'}"/>
+							<ObjectNumber number="{Product>Price}" unit="{Product>CurrencyCode}"/>
+						</cells>
+					</ColumnListItem>
+				</items>
+			</Table>
+			<t:Table id="uiTblProduct" rows="{Product>/ProductCollection}">
+				<t:columns>
+					<t:Column sortProperty="ProductId" filterProperty="ProductId">
+						<Text text="Product Id"/>
+						<t:template>
+							<Text text="{Product>ProductId}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+				<t:columns>
+					<t:Column>
+						<Text text="Product Name"/>
+						<t:template>
+							<Text text="{Product>Name}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+				<t:columns>
+					<t:Column>
+						<Text text="Main Category"/>
+						<t:template>
+							<Text text="{Product>MainCategory}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+				<t:columns>
+					<t:Column>
+						<Text text="Supplier Name"/>
+						<t:template>
+							<Text text="{Product>SupplierName}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+				<t:columns>
+					<t:Column>
+						<Text text="WeightMeasure"/>
+						<t:template>
+							<ObjectNumber number="{Product>WeightMeasure}" unit="{Product>WeightUnit}"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+				<t:columns>
+					<t:Column>
+						<Text text="Status"/>
+						<t:template>
+							<Text text="{Product>Status}" wrapping="false"/>
+						</t:template>
+					</t:Column>
+				</t:columns>
+			</t:Table>
+		</content>
+		<footer>
+			<Toolbar>
+				<Button text="Nav To Next Page" type="Reject" press="onPrsBtnNavTo"/>
+				<Button text="Nav To Third Page" type="Emphasized" press="onPrsBtnNavToThird"/>
+				<ToolbarSpacer/>
+				<Button text="Footer Button" type="Accept" press="onPrsBtnMsgBox"/>
+			</Toolbar>
+		</footer>
+	</Page>
+	<!--	</pages>-->
+	<!--</App>-->
 </mvc:View>
