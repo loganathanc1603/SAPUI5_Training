@@ -142,6 +142,4 @@
 			</Toolbar>
 		</footer>
 	</Page>
-	<!--	</pages>-->
-	<!--</App>-->
 </mvc:View>

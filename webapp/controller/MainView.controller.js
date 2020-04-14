@@ -4,7 +4,6 @@ sap.ui.define([
 	"sap/m/MessageBox",
 	"com/ui5/SAPUI5_Session/model/formatter"
 ], function (Controller, BaseController, MessageBox, formatter) {
-	"use strict";
 	return BaseController.extend("com.ui5.SAPUI5_Session.controller.MainView", {
 		formatter: formatter,
 		onInit: function () {
@@ -170,5 +169,6 @@ sap.ui.define([
 		onPrsBtnNavToThird: function () {
 			this.getRouter().navTo("ThirdView", {}, true);
 		}
+
 	});
 });

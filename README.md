@@ -54,3 +54,8 @@ https://account.hana.ondemand.com/#/home/welcome
 5.	formatter: use of formatter
 6.	Input field with suggestions
 7.	Device API
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> refs/heads/master
