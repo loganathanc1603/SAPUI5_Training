@@ -54,3 +54,15 @@ https://account.hana.ondemand.com/#/home/welcome
 5.	formatter: use of formatter
 6.	Input field with suggestions
 7.	Device API
+
+13.04.2020
+1. Routing
+2. Expression Binding
+
+14.04.2020
+1. Busy Indicator
+2. Connectivity Configuration 
+3. Northwind data base
+4. Network tab in dev tool
+5. RESTful API
+6. OData basic to complex query: odata.org

@@ -8,6 +8,10 @@ sap.ui.define([
 
 		onInit: function () {
 
+		},
+
+		onPrsBtnBack: function () {
+			this.getRouter().navTo("MainView", {}, true);
 		}
 	});
 
