@@ -40,6 +40,15 @@
         "version": "1.52.41"
       },
       "description": "SAPUI5 Test Resources"
+    },
+    {
+      "path": "/sap/opu/odata",
+      "target": {
+        "type": "destination",
+        "name": "ES5",
+        "entryPath": "/sap/opu/odata"
+      },
+      "description": "SAP Gateway Demo System"
     }
   ],
   "sendWelcomeFileRedirect": true
