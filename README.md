@@ -60,9 +60,12 @@ https://account.hana.ondemand.com/#/home/welcome
 2. Expression Binding
 
 14.04.2020
-1. Busy Indicator
 2. Connectivity Configuration 
 3. Northwind data base
 4. Network tab in dev tool
 5. RESTful API
 6. OData basic to complex query: odata.org
+
+18.04.2020
+1. OData read operation using ES5 Demo system
+2. 
