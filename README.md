@@ -68,4 +68,10 @@ https://account.hana.ondemand.com/#/home/welcome
 
 18.04.2020
 1. OData read operation using ES5 Demo system (EPM_REF_APPS_SHOP_SRV)
-2. 
+2. sap m table to build the records
+
+19.04.2020
+1. Filterbar with odata model
+2. multiInput and tokens
+3. Select dialog
+4. odata filtering

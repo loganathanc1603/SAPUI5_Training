@@ -1,18 +1,38 @@
 <mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ui5.SAPUI5_Session.controller.SecondView"
-	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true">
+	xmlns:html="http://www.w3.org/1999/xhtml" displayBlock="true" xmlns:fb="sap.ui.comp.filterbar">
 	<Page title="{i18n>secondViewTit}" showNavButton="true" navButtonPress="onPrsNavBack">
 		<content>
+			<fb:FilterBar id="filterBarId" reset="onReset" search="onSearch" clear="onClear" cancel="onCancel"
+				filtersDialogClosed="onFiltersDialogClosed" showRestoreButton="true" showClearButton="true">
+				<fb:filterGroupItems>
+					<fb:FilterGroupItem groupName="Product" name="A" label="Product ID" partOfCurrentVariant="true" visibleInFilterBar="true">
+						<fb:control>
+							<MultiInput id="mMIpProductId" enableMultiLineMode="true" valueHelpOnly="true" showValueHelp="true" valueHelpRequest="onValReqProduct"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="Category" name="A" label="Category" partOfCurrentVariant="true" visibleInFilterBar="true">
+						<fb:control>
+							<MultiInput showValueHelp="true" valueHelpRequest="onValReqProduct"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+					<fb:FilterGroupItem groupName="Supplier" name="A" label="Supplier" partOfCurrentVariant="true" visibleInFilterBar="true">
+						<fb:control>
+							<MultiInput showValueHelp="true" valueHelpRequest="onValReqProduct"/>
+						</fb:control>
+					</fb:FilterGroupItem>
+				</fb:filterGroupItems>
+			</fb:FilterBar>
 			<!--, filters:[{path:'SubCategoryId', operator:'EQ', value1:'Notebooks'}]-->
-			<Table id="mTblPrdId" items="{path:'/Products', sorter:{path:'SubCategoryId',descending: false, group:true}}" enableBusyIndicator="true"
-				growing="true" growingThreshold="50" alternateRowColors="true" class="custCssClass">
+			<Table id="mTblPrdId" items="{path:'/Products', sorter:{path:'SubCategoryId',descending: false}}" enableBusyIndicator="true" growing="true"
+				growingThreshold="50" alternateRowColors="true" updateFinished="fnUpdateFinshed">
 				<!--headerToolber table aggreagation-->
 				<headerToolbar>
 					<Toolbar>
 						<content>
-							<Title text="Products" level="H2"/>
+							<Title text="{LocalModel>/tableTitle}" level="H2"/>
 							<ToolbarSpacer/>
 							<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
-							<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>
+							<!--<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>-->
 						</content>
 					</Toolbar>
 				</headerToolbar>
