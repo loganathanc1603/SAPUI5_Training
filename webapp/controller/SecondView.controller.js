@@ -20,18 +20,18 @@ sap.ui.define([
 			});
 			this.getView().setModel(this.LocalJModel, "LocalModel");
 			this.oDataModel = this.getOwnerComponent().getModel();
-			this.fetchData();
+			// this.fetchData();
 			this.getRouter().getRoute("SecondView").attachPatternMatched(this.onObjectMatched, this);
 		},
 
-		//fetching the products record
+		//fetching the products record using javascript odata read method
 		fetchData: function () {
-			this.oDataModel.read("/Products", {
+			this.oDataModel.read("/ProductSet", {
 				success: function (oData) {
-					var oModel = new JSONModel();
+					// var oModel = new JSONModel();
 				},
 				error: function (err) {
-					var msg = err;
+					// var msg = err;
 				}
 			});
 		},
@@ -58,7 +58,7 @@ sap.ui.define([
 				oTable = this.byId("mTblPrdId").getBinding("items"),
 				aFilters = [];
 			for (var i = 0; i < oProductId.length; i++) {
-				aFilters.push(new Filter("Id", FilterOperator.EQ, oProductId[i].getKey()));
+				aFilters.push(new Filter("ProductID", FilterOperator.EQ, oProductId[i].getKey()));
 			}
 			oTable.filter(aFilters);
 		},
@@ -69,6 +69,16 @@ sap.ui.define([
 			oD.open();
 		},
 
+		onTitPrsPId: function (evt) {
+			var sPath = evt.getSource().getParent().getBindingContextPath();
+			var oD = this.getFragment("com.ui5.SAPUI5_Session.fragments.ProductDesc", this._mDialogs);
+			this.getView().addDependent(oD);
+			oD.bindElement({
+				path: sPath
+			});
+			oD.openBy(evt.getSource());
+		},
+
 		onCfrmProduct: function (evt) {
 			var selectedItems = evt.getParameter("selectedItems");
 			var oProductId = this.byId("mMIpProductId");
@@ -76,7 +86,7 @@ sap.ui.define([
 
 			for (var i = 0; i < selectedItems.length; i++) {
 				aTokens.push(new Token({
-					key: selectedItems[i].getBindingContext().getObject().Id,
+					key: selectedItems[i].getBindingContext().getObject().ProductID,
 					text: selectedItems[i].getBindingContext().getObject().Name
 				}));
 			}
@@ -84,12 +94,66 @@ sap.ui.define([
 			oProductId.setTokens(aTokens);
 		},
 
+		//searching the value help products
+		onSearchProduct: function (evt) {
+			var oBinding = evt.getParameter("itemsBinding"),
+				Query = evt.getParameter("value"),
+				aFilters = [];
+			var f1 = new Filter({
+				path: "ProductID",
+				operator: FilterOperator.Contains,
+				value1: Query
+			});
+			aFilters.push(f1);
+			oBinding.filter(aFilters, "Application");
+		},
+
 		//update finishe method 
 		fnUpdateFinshed: function (evt) {
 			var count = evt.getParameter("total");
 			var title = "Products ( " + count + " )";
 			this.LocalJModel.setProperty("/tableTitle", title);
+		},
+
+		onPrsBtnAddProducts: function () {
+			this.getRouter().navTo("AddProducts", {}.true);
 		}
+	
+
+		//Adding the product to database
+		// onPrsBtnAddProducts: function () {
+		// 	var oModel = this.getOwnerComponent().getModel();
+		// 	var sPath = "/ProductSet",
+		// 		Obj = {
+		// 			"ProductID": "MB-13890",
+		// 			"TypeCode": "PR",
+		// 			"Category": "Notebooks",
+		// 			"Name": "Apple Macbook Pro 32Inch",
+		// 			"NameLanguage": "EN",
+		// 			"Description": "Apple Monitor 32 inch, 1 TB SDD, 32 GB RAM",
+		// 			"DescriptionLanguage": "EN",
+		// 			"SupplierID": "0100000000",
+		// 			"SupplierName": "SAP",
+		// 			"TaxTarifCode": 1,
+		// 			"MeasureUnit": "EA",
+		// 			"WeightMeasure": "4.200",
+		// 			"WeightUnit": "KG",
+		// 			"CurrencyCode": "INR",
+		// 			"Price": "15000.00",
+		// 			"Width": "30.000",
+		// 			"Depth": "18.000",
+		// 			"Height": "3.000",
+		// 			"DimUnit": "CM"
+		// 		};
+		// 	oModel.create(sPath, Obj, {
+		// 		success: function (oData) {
+		// 			sap.m.MessageBox.show("Product Created Successfully.", sap.m.MessageBox.Icon.SUCCESS, "Success");
+		// 		},
+		// 		error: function (error) {
+		// 			sap.m.MessageBox.show("Product Creation failed.", sap.m.MessageBox.Icon.ERROR, "Error");
+		// 		}
+		// 	});
+		// }
 
 	});
 

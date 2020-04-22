@@ -14,11 +14,11 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"EPM_REF_APPS_SHOP_SRV": {
-				"uri": "/sap/opu/odata/sap/EPM_REF_APPS_SHOP_SRV/",
+			"GWSAMPLE_BASIC": {
+				"uri": "/ES5/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
 				"type": "OData",
 				"settings": {
-					"localUri": "localService/metadata.xml"
+					"localUri": "localService/GWSAMPLE_BASIC/metadata.xml"
 				}
 			}
 		}
@@ -76,10 +76,10 @@
 				"settings": {
 					"defaultOperationMode": "Server",
 					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request",
+					"defaultCountMode": "InlineRepeat",
 					"useBatch": false
 				},
-				"dataSource": "EPM_REF_APPS_SHOP_SRV",
+				"dataSource": "GWSAMPLE_BASIC",
 				"preload": true
 			}
 		},
@@ -118,6 +118,12 @@
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["ThirdView"]
+			}, {
+				"name": "AddProducts",
+				"pattern": "AddProducts",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["AddProducts"]
 			}],
 			"targets": {
 				"MainView": {
@@ -143,6 +149,14 @@
 					"viewName": "ThirdView",
 					"viewId": "ThirdView",
 					"viewLevel": 3,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
+				},
+				"AddProducts": {
+					"viewType": "XML",
+					"viewName": "AddProducts",
+					"viewId": "AddProducts",
+					"viewLevel": 1,
 					"controlAggregation": "pages",
 					"controlId": "mAppId"
 				}
