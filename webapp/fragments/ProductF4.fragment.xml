@@ -2,16 +2,13 @@
 	<SelectDialog noDataText="No Products Found" title="Select Product" search="onSearchProduct" 
 	confirm="onCfrmProduct"
 	multiSelect="true"
+	growingThreshold="100"
 	items="{ 
-		path : '/Products', 
-		sorter: {
-			path:'Name',
-			descending: false
-		},
+		path : '/ProductSet',
 		parameters:{
-			select: 'Id,Name'
+			select: 'ProductID,Name'
 		}
 		}">
-		<StandardListItem title="{Name}" description="{Id}" iconDensityAware="false" iconInset="false" type="Active"/>
+		<StandardListItem title="{ProductID}" description="{Name}" iconDensityAware="false" iconInset="false" type="Active"/>
 	</SelectDialog>
 </core:FragmentDefinition>

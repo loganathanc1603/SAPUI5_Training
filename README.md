@@ -67,7 +67,7 @@ https://account.hana.ondemand.com/#/home/welcome
 6. OData basic to complex query: odata.org
 
 18.04.2020
-1. OData read operation using ES5 Demo system (EPM_REF_APPS_SHOP_SRV)
+1. OData read operation using ES5 Demo system (GWSAMPLE_BASIC)
 2. sap m table to build the records
 
 19.04.2020
@@ -75,3 +75,16 @@ https://account.hana.ondemand.com/#/home/welcome
 2. multiInput and tokens
 3. Select dialog
 4. odata filtering
+ 
+22.04.2020
+1. Popover dialog 
+2. Different Date format values
+3. Product creation using OData - ProductSet
+4. OData suggestion items and select option
+ 
+26.04.2020
+1. OData model update 
+2. OData model delete
+3. OData Expanded entity call
+4. Quick view contact dialog
+5. sap.uxa [Object page section]

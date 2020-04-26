@@ -1,0 +1,16 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core">
+	<QuickView placement="Auto">
+		<QuickViewPage icon="sap-icon://customer-and-contacts" header="Supplier Information" title="{ToSupplier/BusinessPartnerID}"
+			description="{ToSupplier/CompanyName}">
+			<QuickViewGroup heading="Contact Details">
+				<QuickViewGroupElement label="Phone Number" value="{ToSupplier/PhoneNumber}" type="phone"/>
+				<QuickViewGroupElement label="Fax Number" value="{ToSupplier/FaxNumber}" type="mobile"/>
+				<QuickViewGroupElement label="Email Address" value="{ToSupplier/EmailAddress}" type="email"/>
+				<QuickViewGroupElement label="Web Address" value="{ToSupplier/WebAddress}" type="link"/>
+				<QuickViewGroupElement label="Street" value="{ToSupplier/Address/Street}" type="text"/>
+				<QuickViewGroupElement label="City" value="{ToSupplier/Address/City}" type="text"/>
+				<QuickViewGroupElement label="Country" value="{ToSupplier/Address/Country}" type="text"/>
+			</QuickViewGroup>
+		</QuickViewPage>
+	</QuickView>
+</core:FragmentDefinition>

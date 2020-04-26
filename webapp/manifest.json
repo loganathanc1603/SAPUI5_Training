@@ -14,11 +14,11 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"EPM_REF_APPS_SHOP_SRV": {
-				"uri": "/sap/opu/odata/sap/EPM_REF_APPS_SHOP_SRV/",
+			"GWSAMPLE_BASIC": {
+				"uri": "/ES5/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
 				"type": "OData",
 				"settings": {
-					"localUri": "localService/metadata.xml"
+					"localUri": "localService/GWSAMPLE_BASIC/metadata.xml"
 				}
 			}
 		}
@@ -75,11 +75,11 @@
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
-					"defaultBindingMode": "OneWay",
-					"defaultCountMode": "Request",
-					"useBatch": false
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "InlineRepeat",
+					"useBatch": true
 				},
-				"dataSource": "EPM_REF_APPS_SHOP_SRV",
+				"dataSource": "GWSAMPLE_BASIC",
 				"preload": true
 			}
 		},
@@ -108,7 +108,7 @@
 				"target": ["MainView"]
 			}, {
 				"name": "SecondView",
-				"pattern": "SecondView/{Obj}",
+				"pattern": "SecondView/(:Obj:)",
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["SecondView"]
@@ -118,6 +118,18 @@
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["ThirdView"]
+			}, {
+				"name": "AddProducts",
+				"pattern": "AddProducts",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["AddProducts"]
+			}, {
+				"name": "ProductDisplayAndEdit",
+				"pattern": "ProductEdit/{ProductPath}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["ProductDisplayAndEdit"]
 			}],
 			"targets": {
 				"MainView": {
@@ -145,6 +157,22 @@
 					"viewLevel": 3,
 					"controlAggregation": "pages",
 					"controlId": "mAppId"
+				},
+				"AddProducts": {
+					"viewType": "XML",
+					"viewName": "AddProducts",
+					"viewId": "AddProducts",
+					"viewLevel": 1,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
+				},
+				"ProductDisplayAndEdit": {
+					"viewType": "XML",
+					"viewName": "ProductDisplayAndEdit",
+					"controlId": "mAppId",
+					"viewId": "ProductEdit",
+					"viewLevel": 4,
+					"controlAggregation": "pages"
 				}
 			}
 		}

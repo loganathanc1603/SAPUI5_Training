@@ -1,0 +1,102 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.uxap" xmlns:m="sap.m" xmlns:l="sap.ui.layout"
+	xmlns:f="sap.ui.layout.form"
+	controllerName="com.ui5.SAPUI5_Session.controller.ProductDisplayAndEdit" xmlns:html="http://www.w3.org/1999/xhtml">
+	<m:Page title="Product Data Modification" busy="{LocalModel>/iBusy}" busyIndicatorDelay="{LocalModel>/iBusyDelay}"  showNavButton="true" navButtonPress="onPrsNavBtn">
+		<m:content>
+			<ObjectPageLayout>
+				<headerTitle>
+					<ObjectPageHeader objectTitle="{ProductID}"></ObjectPageHeader>
+				</headerTitle>
+				<headerContent>
+					<m:ObjectAttribute text="{Description}"/>
+				</headerContent>
+				<sections>
+					<ObjectPageSection titleUppercase="false" title="Product Information">
+						<subSections>
+							<ObjectPageSubSection>
+								<blocks>
+									<f:SimpleForm editable="true" layout="ResponsiveGridLayout" labelSpanXL="4" labelSpanL="4" labelSpanM="12" labelSpanS="12"
+										singleContainerFullSize="false">
+										<f:content>
+											<core:Title/>
+											<m:Label text="Product ID"/>
+											<m:Input value="{ProductID}" editable="{LocalModel>/editable}"/>
+											<m:Label text="Product Name"/>
+											<m:Input value="{Name}" editable="{LocalModel>/editable}"/>
+											<m:Label text="Supplier ID"/>
+											<m:Select  selectedKey="{SupplierID}" 
+											change="onSelectChangeBP" 
+											forceSelection="false" 
+											items="{ path: '/BusinessPartnerSet'}"
+											enabled="{LocalModel>/editable}">
+												<core:Item key="{BusinessPartnerID}" text="{BusinessPartnerID}"/>
+											</m:Select>
+											<m:Label text="Supplier Name"/>
+											<m:Text id="mIpBPName" text="{SupplierName}"/>
+											<m:Label text="Type Code"/>
+											<m:Text text="{TypeCode}"/>
+											<m:Label text="Dimension"/>
+											<m:Text text="{Height} x {Width} x {Depth}"/>
+											<m:Label text="Dimension Unit"/>
+											<m:Text text="{DimUnit}"/>
+											<m:Label text="Created At"/>
+											<m:Text text="{path:'CreatedAt',type:'sap.ui.model.type.Date', formatOptions:{ style:'medium' } }"/>
+											<core:Title/>
+											<m:Label text="Product Description"/>
+											<m:Input value="{Description}" editable="{LocalModel>/editable}"/>
+											<m:Label text="Category"/>
+											<m:Select  
+												selectedKey="{Category}" 
+												forceSelection="false" 
+												items="{ path: '/VH_CategorySet'}"
+												enabled="{LocalModel>/editable}">
+												<core:Item key="{Category}" text="{Category}"/>
+											</m:Select>
+											<m:Label text="Price"/>
+											<m:Text text="{Price}"/>
+											<m:Label text="Currency Code"/>
+											<m:Text text="{CurrencyCode}"/>
+											<m:Label text="Tax Tarif Code"/>
+											<m:Text text="{TaxTarifCode}"/>
+											<m:Label text="Weight"/>
+											<m:Text text="{WeightMeasure} {WeightUnit}"/>
+											<m:Label text="Changed At"/>
+											<m:Text text="{path:'ChangedAt',type:'sap.ui.model.type.Date', formatOptions:{ style:'medium' } }"/>
+										
+										</f:content>
+									</f:SimpleForm>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection title="Supplier Information">
+						<subSections>
+							<ObjectPageSubSection>
+								<blocks>
+									<m:MessageStrip text="{ToSupplier/CompanyName}" type="Warning"/>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+					<ObjectPageSection  title="Sales Order Line Item">
+						<subSections>
+							<ObjectPageSubSection>
+								<blocks>
+									<m:MessageStrip text="Sales Order Line Item not implemented." type="Warning"/>
+								</blocks>
+							</ObjectPageSubSection>
+						</subSections>
+					</ObjectPageSection>
+				</sections>
+			</ObjectPageLayout>
+		</m:content>
+		<m:footer>
+			<m:OverflowToolbar>
+				<m:ToolbarSpacer/>
+				<m:Button text="Edit" type="Emphasized" press="onPrsEditProduct" visible="{LocalModel>/editBtn}"/>
+				<m:Button text="Save" type="Emphasized" press="onPrsSaveProduct" visible="{LocalModel>/saveBtn}"/>
+				<m:Button text="Cancel" type="Reject" press="onPrsBtnCancel" visible="{LocalModel>/cancelBtn}"/>
+			</m:OverflowToolbar>
+		</m:footer>
+	</m:Page>
+</mvc:View>

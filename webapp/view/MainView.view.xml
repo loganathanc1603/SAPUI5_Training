@@ -135,7 +135,7 @@
 		</content>
 		<footer>
 			<Toolbar>
-				<Button text="Nav To Next Page" type="Reject" press="onPrsBtnNavTo"/>
+				<Button text="Nav To OData Model Page" type="Reject" press="onPrsBtnNavTo"/>
 				<Button text="Nav To Third Page" type="Emphasized" press="onPrsBtnNavToThird"/>
 				<ToolbarSpacer/>
 				<Button text="Footer Button" type="Accept" press="onPrsBtnMsgBox"/>

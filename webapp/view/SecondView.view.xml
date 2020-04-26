@@ -23,16 +23,20 @@
 				</fb:filterGroupItems>
 			</fb:FilterBar>
 			<!--, filters:[{path:'SubCategoryId', operator:'EQ', value1:'Notebooks'}]-->
-			<Table id="mTblPrdId" items="{path:'/Products', sorter:{path:'SubCategoryId',descending: false}}" enableBusyIndicator="true" growing="true"
-				growingThreshold="50" alternateRowColors="true" updateFinished="fnUpdateFinshed">
+			<Table id="mTblPrdId" mode="SingleSelectLeft" 
+				selectionChange="onSelectionChange"
+				items="{ path:'/ProductSet'}"
+				growing="true" growingThreshold="50"
+				alternateRowColors="true" updateFinished="fnUpdateFinshed">
 				<!--headerToolber table aggreagation-->
 				<headerToolbar>
 					<Toolbar>
 						<content>
 							<Title text="{LocalModel>/tableTitle}" level="H2"/>
 							<ToolbarSpacer/>
+							<Button text="Create" press="onPrsBtnAddProducts"/>
+							<Button text="Delete" enabled="{LocalModel>/deleteBtnEnable}" press="onPrsBtnDeleteProducts"/>
 							<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
-							<!--<SearchField width="30%" liveChange="onSearchProducts" search="onSearchProducts" placeholder="Enter a search value"/>-->
 						</content>
 					</Toolbar>
 				</headerToolbar>
@@ -43,39 +47,35 @@
 					</Column>
 					<!-- demandPopin true enable the responsiveness for mobile and tablet. for this need to define the minScreenWidth -->
 					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-						<Text text="Name"/>
+						<Text text="Category"/>
 					</Column>
 					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-						<Text text="Categoery"/>
-					</Column>
-					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
-						<Text text="Sub Category"/>
-					</Column>
-					<Column>
 						<Text text="Supplier"/>
 					</Column>
-					<Column>
-						<Text text="Quantity"/>
-					</Column>
-					<Column>
-						<Text text="Average Rating"/>
-					</Column>
 					<Column demandPopin="true" popinDisplay="Block" minScreenWidth="Tablet">
+						<Text text="Weight"/>
+					</Column>
+					<Column>
 						<Text text="Price"/>
+					</Column>
+					<Column>
+						<Text text="Created By"/>
+					</Column>
+					<Column>
+						<Text text="Changed At"/>
 					</Column>
 				</columns>
 				<!--items table aggregation-->
 				<items>
-					<ColumnListItem>
+					<ColumnListItem type="Navigation" press="onPrsNavPrdEdit">
 						<cells>
-							<ObjectIdentifier title="{Id}" text="{Name}" titleActive="true"/>
-							<Text text="{Name}"/>
-							<ObjectStatus text="{path:'MainCategoryId'}"/>
-							<Text text="{SubCategoryId}"/>
-							<ObjectStatus text="{SupplierName}"/>
-							<ObjectNumber number="{StockQuantity}" state="{path:'StockQuantity', formatter:'.formatter.getStatusOfQnty'}"/>
-							<RatingIndicator value="{RatingCount}" displayOnly="true"/>
+							<ObjectIdentifier title="{ProductID}" text="{Name}" titlePress="onTitPrsPId" titleActive="true"/>
+							<Text text="{Category}"/>
+							<ObjectIdentifier title="{SupplierID}" text="{SupplierName}" titleActive="true" titlePress="onTitPrsSupplier"/>
+							<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"/>
 							<ObjectNumber number="{Price}" unit="{CurrencyCode}"/>
+							<ObjectIdentifier text="{ path:'CreatedAt', type:'sap.ui.model.type.Date', formatOptions:{ style:'medium' } }"/>
+							<ObjectIdentifier text="{ path:'ChangedAt', type:'sap.ui.model.type.Date', formatOptions:{ style:'medium' } }"/>
 						</cells>
 					</ColumnListItem>
 				</items>
