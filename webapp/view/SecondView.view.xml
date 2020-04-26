@@ -23,19 +23,28 @@
 				</fb:filterGroupItems>
 			</fb:FilterBar>
 			<!--, filters:[{path:'SubCategoryId', operator:'EQ', value1:'Notebooks'}]-->
+<<<<<<< HEAD
 			<Table id="mTblPrdId" mode="SingleSelectLeft" 
 				selectionChange="onSelectionChange"
 				items="{ path:'/ProductSet'}"
 				growing="true" growingThreshold="50"
 				alternateRowColors="true" updateFinished="fnUpdateFinshed">
+=======
+			<Table id="mTblPrdId" items="{path:'/ProductSet'}" enableBusyIndicator="true" growing="true"
+				growingThreshold="50" alternateRowColors="true" updateFinished="fnUpdateFinshed">
+>>>>>>> refs/heads/master
 				<!--headerToolber table aggreagation-->
 				<headerToolbar>
 					<Toolbar>
 						<content>
 							<Title text="{LocalModel>/tableTitle}" level="H2"/>
 							<ToolbarSpacer/>
+<<<<<<< HEAD
 							<Button text="Create" press="onPrsBtnAddProducts"/>
 							<Button text="Delete" enabled="{LocalModel>/deleteBtnEnable}" press="onPrsBtnDeleteProducts"/>
+=======
+							<Button text="Add" press="onPrsBtnAddProducts"/>
+>>>>>>> refs/heads/master
 							<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
 						</content>
 					</Toolbar>
@@ -64,6 +73,10 @@
 					<Column>
 						<Text text="Changed At"/>
 					</Column>
+<<<<<<< HEAD
+=======
+				
+>>>>>>> refs/heads/master
 				</columns>
 				<!--items table aggregation-->
 				<items>
@@ -71,11 +84,32 @@
 						<cells>
 							<ObjectIdentifier title="{ProductID}" text="{Name}" titlePress="onTitPrsPId" titleActive="true"/>
 							<Text text="{Category}"/>
+<<<<<<< HEAD
 							<ObjectIdentifier title="{SupplierID}" text="{SupplierName}" titleActive="true" titlePress="onTitPrsSupplier"/>
+=======
+							<ObjectIdentifier title="{SupplierID}" text="{SupplierName}"/>
+>>>>>>> refs/heads/master
 							<ObjectNumber number="{WeightMeasure}" unit="{WeightUnit}"/>
 							<ObjectNumber number="{Price}" unit="{CurrencyCode}"/>
+<<<<<<< HEAD
 							<ObjectIdentifier text="{ path:'CreatedAt', type:'sap.ui.model.type.Date', formatOptions:{ style:'medium' } }"/>
 							<ObjectIdentifier text="{ path:'ChangedAt', type:'sap.ui.model.type.Date', formatOptions:{ style:'medium' } }"/>
+=======
+							<ObjectIdentifier text="{
+							path:'CreatedAt',
+							type:'sap.ui.model.type.Date',
+							formatOptions:{
+								style:'medium'
+							}
+							}"/>
+							<ObjectIdentifier text="{
+								path:'ChangedAt',
+								type:'sap.ui.model.type.Date',
+								formatOptions:{
+									style:'medium'
+								}
+							}"/>
+>>>>>>> refs/heads/master
 						</cells>
 					</ColumnListItem>
 				</items>

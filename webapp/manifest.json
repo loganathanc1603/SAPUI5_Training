@@ -75,9 +75,15 @@
 				"type": "sap.ui.model.odata.v2.ODataModel",
 				"settings": {
 					"defaultOperationMode": "Server",
+<<<<<<< HEAD
 					"defaultBindingMode": "TwoWay",
 					"defaultCountMode": "InlineRepeat",
 					"useBatch": true
+=======
+					"defaultBindingMode": "OneWay",
+					"defaultCountMode": "InlineRepeat",
+					"useBatch": false
+>>>>>>> refs/heads/master
 				},
 				"dataSource": "GWSAMPLE_BASIC",
 				"preload": true
@@ -124,12 +130,15 @@
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["AddProducts"]
+<<<<<<< HEAD
 			}, {
 				"name": "ProductDisplayAndEdit",
 				"pattern": "ProductEdit/{ProductPath}",
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["ProductDisplayAndEdit"]
+=======
+>>>>>>> refs/heads/master
 			}],
 			"targets": {
 				"MainView": {
@@ -165,6 +174,7 @@
 					"viewLevel": 1,
 					"controlAggregation": "pages",
 					"controlId": "mAppId"
+<<<<<<< HEAD
 				},
 				"ProductDisplayAndEdit": {
 					"viewType": "XML",
@@ -173,6 +183,8 @@
 					"viewId": "ProductEdit",
 					"viewLevel": 4,
 					"controlAggregation": "pages"
+=======
+>>>>>>> refs/heads/master
 				}
 			}
 		}

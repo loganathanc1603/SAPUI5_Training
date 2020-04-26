@@ -71,6 +71,7 @@ sap.ui.define([
 			oD.open();
 		},
 
+<<<<<<< HEAD
 		//on press title product id
 		onTitPrsPId: function (evt) {
 			var sPath = evt.getSource().getParent().getBindingContextPath();
@@ -89,6 +90,14 @@ sap.ui.define([
 			this.getView().addDependent(oD);
 			oD.bindElement(oKey, {
 				expand: "ToSupplier"
+=======
+		onTitPrsPId: function (evt) {
+			var sPath = evt.getSource().getParent().getBindingContextPath();
+			var oD = this.getFragment("com.ui5.SAPUI5_Session.fragments.ProductDesc", this._mDialogs);
+			this.getView().addDependent(oD);
+			oD.bindElement({
+				path: sPath
+>>>>>>> refs/heads/master
 			});
 			oD.openBy(evt.getSource());
 		},
@@ -129,6 +138,7 @@ sap.ui.define([
 		},
 
 		onPrsBtnAddProducts: function () {
+<<<<<<< HEAD
 			this.getRouter().navTo("AddProducts", {}, true);
 		},
 
@@ -162,7 +172,46 @@ sap.ui.define([
 				}.bind(this)
 			};
 			this.oDataModel.remove(selectedContext, mSettings);
+=======
+			this.getRouter().navTo("AddProducts", {}.true);
+>>>>>>> refs/heads/master
 		}
+	
+
+		//Adding the product to database
+		// onPrsBtnAddProducts: function () {
+		// 	var oModel = this.getOwnerComponent().getModel();
+		// 	var sPath = "/ProductSet",
+		// 		Obj = {
+		// 			"ProductID": "MB-13890",
+		// 			"TypeCode": "PR",
+		// 			"Category": "Notebooks",
+		// 			"Name": "Apple Macbook Pro 32Inch",
+		// 			"NameLanguage": "EN",
+		// 			"Description": "Apple Monitor 32 inch, 1 TB SDD, 32 GB RAM",
+		// 			"DescriptionLanguage": "EN",
+		// 			"SupplierID": "0100000000",
+		// 			"SupplierName": "SAP",
+		// 			"TaxTarifCode": 1,
+		// 			"MeasureUnit": "EA",
+		// 			"WeightMeasure": "4.200",
+		// 			"WeightUnit": "KG",
+		// 			"CurrencyCode": "INR",
+		// 			"Price": "15000.00",
+		// 			"Width": "30.000",
+		// 			"Depth": "18.000",
+		// 			"Height": "3.000",
+		// 			"DimUnit": "CM"
+		// 		};
+		// 	oModel.create(sPath, Obj, {
+		// 		success: function (oData) {
+		// 			sap.m.MessageBox.show("Product Created Successfully.", sap.m.MessageBox.Icon.SUCCESS, "Success");
+		// 		},
+		// 		error: function (error) {
+		// 			sap.m.MessageBox.show("Product Creation failed.", sap.m.MessageBox.Icon.ERROR, "Error");
+		// 		}
+		// 	});
+		// }
 
 	});
 
