@@ -81,13 +81,10 @@ https://account.hana.ondemand.com/#/home/welcome
 2. Different Date format values
 3. Product creation using OData - ProductSet
 4. OData suggestion items and select option
-<<<<<<< HEAD
  
 26.04.2020
 1. OData model update 
 2. OData model delete
 3. OData Expanded entity call
 4. Quick view contact dialog
-5. sap.uxa [Object page section]
-=======
->>>>>>> refs/heads/master
+5. sap.uxa [Object page section new control]
