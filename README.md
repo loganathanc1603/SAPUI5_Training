@@ -87,4 +87,4 @@ https://account.hana.ondemand.com/#/home/welcome
 2. OData model delete
 3. OData Expanded entity call
 4. Quick view contact dialog
-5. sap.uxa [Object page section]
+5. sap.uxa [Object page section] Test
