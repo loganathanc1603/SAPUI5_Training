@@ -95,3 +95,5 @@ https://account.hana.ondemand.com/#/home/welcome
 3. javascript validations using reg expression
 4. Routing by passed
 5. Basic of Master Details Pages [SplitApp]
+
+01.05.2020
