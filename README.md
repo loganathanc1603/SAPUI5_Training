@@ -97,3 +97,4 @@ https://account.hana.ondemand.com/#/home/welcome
 5. Basic of Master Details Pages [SplitApp]
 
 01.05.2020
+1. Input validations
