@@ -57,6 +57,14 @@
         "name": "ES5"
       },
       "description": "SAP Gateway Demo System"
+    },
+    {
+      "path": "/Northwind",
+      "target": {
+        "type": "destination",
+        "name": "Northwind"
+      },
+      "description": "Northwind with SAP WebIDE"
     }
   ],
   "sendWelcomeFileRedirect": true

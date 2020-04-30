@@ -38,7 +38,10 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": ["sap_hcb", "sap_belize"]
+		"supportedThemes": [
+			"sap_hcb",
+			"sap_belize"
+		]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -49,9 +52,9 @@
 		"dependencies": {
 			"minUI5Version": "1.30.0",
 			"libs": {
-				"sap.ui.layout": {},
+				"sap.m": {},
 				"sap.ui.core": {},
-				"sap.m": {}
+				"sap.ui.layout": {}
 			}
 		},
 		"contentDensities": {
@@ -84,9 +87,11 @@
 			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -99,38 +104,47 @@
 				"clearControlAggregation": false,
 				"viewLevel": 1,
 				"bypassed": {
-					"target": []
+					"target": [
+						"PageNotFound"
+					]
 				}
 			},
-			"routes": [{
-				"name": "MainView",
-				"pattern": "",
-				"target": ["MainView"]
-			}, {
-				"name": "SecondView",
-				"pattern": "SecondView/(:Obj:)",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["SecondView"]
-			}, {
-				"name": "ThirdView",
-				"pattern": "Third",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["ThirdView"]
-			}, {
-				"name": "AddProducts",
-				"pattern": "AddProducts",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["AddProducts"]
-			}, {
-				"name": "ProductDisplayAndEdit",
-				"pattern": "ProductEdit/{ProductPath}",
-				"titleTarget": "",
-				"greedy": false,
-				"target": ["ProductDisplayAndEdit"]
-			}],
+			"routes": [
+				{
+					"name": "MainView",
+					"pattern": "",
+					"target": [
+						"MainView"
+					]
+				},
+				{
+					"name": "SecondView",
+					"pattern": "SecondView/(:Obj:)",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"SecondView"
+					]
+				},
+				{
+					"name": "AddProducts",
+					"pattern": "AddProducts",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"AddProducts"
+					]
+				},
+				{
+					"name": "ProductDisplayAndEdit",
+					"pattern": "ProductEdit/{ProductPath}",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"ProductDisplayAndEdit"
+					]
+				}
+			],
 			"targets": {
 				"MainView": {
 					"viewType": "XML",
@@ -150,14 +164,6 @@
 					"controlAggregation": "pages",
 					"controlId": "mAppId"
 				},
-				"ThirdView": {
-					"viewType": "XML",
-					"viewName": "ThirdView",
-					"viewId": "ThirdView",
-					"viewLevel": 3,
-					"controlAggregation": "pages",
-					"controlId": "mAppId"
-				},
 				"AddProducts": {
 					"viewType": "XML",
 					"viewName": "AddProducts",
@@ -173,6 +179,15 @@
 					"viewId": "ProductEdit",
 					"viewLevel": 4,
 					"controlAggregation": "pages"
+				},
+				"PageNotFound": {
+					"viewType": "XML",
+					"viewName": "PageNotFound",
+					"title": "NotFound",
+					"viewId": "NotFound",
+					"viewLevel": 5,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
 				}
 			}
 		}

@@ -164,10 +164,6 @@ sap.ui.define([
 			this.getRouter().navTo("SecondView", {
 				Obj: "Test"
 			}, true);
-		},
-
-		onPrsBtnNavToThird: function () {
-			this.getRouter().navTo("ThirdView", {}, true);
 		}
 
 	});

@@ -70,6 +70,40 @@ sap.ui.define([
 		},
 
 		onPrsSaveProduct: function () {
+			var oModel = this.getOwnerComponent().getModel("NWDB");
+			var obj = {
+				"ID": 1,
+				"Name": "Tokyo Traders",
+				"Address": {
+					"Street": "NE 40th",
+					"City": "Redmond",
+					"State": "WA",
+					"ZipCode": "98052",
+					"Country": "USA"
+				}
+			};
+
+			obj.Products = [{
+				"ID": 9,
+				"Name": "Bread",
+				"Description": "Whole grain bread",
+				"ReleaseDate": new Date(),
+				"DiscontinuedDate": null,
+				"Rating": 4,
+				"Price": "2.5"
+			}];
+
+			oModel.create("/Suppliers", obj, {
+				success: function (oData) {
+					var d = oData;
+				},
+				error: function (err) {
+					var e = err;
+				}
+			});
+		},
+
+		onPrsSaveProduct1: function () {
 			var oModel = this.oDataModel;
 			if (this.oDataModel.hasPendingChanges()) {
 				this.LocalModel.setProperty("/iBusy", true);

@@ -1,9 +1,0 @@
-<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="com.ui5.SAPUI5_Session.controller.ThirdView"
-	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.m.semantic">
-	<semantic:FullscreenPage title="Third Page" showNavButton="true" navButtonPress="onPrsBtnBack">
-		<semantic:content></semantic:content>
-		<semantic:customFooterContent>
-			<Button text="Go Back" type="Emphasized" press="onPrsBtnBack"/>
-		</semantic:customFooterContent>
-	</semantic:FullscreenPage>
-</mvc:View>

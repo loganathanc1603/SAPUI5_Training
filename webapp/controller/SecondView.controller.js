@@ -162,6 +162,60 @@ sap.ui.define([
 				}.bind(this)
 			};
 			this.oDataModel.remove(selectedContext, mSettings);
+		},
+
+		//OData sorting
+		onPrsSortDialog: function () {
+			var oD = this.getFragment("com.ui5.SAPUI5_Session.fragments.SortDialog", this._mDialogs);
+			this.getView().addDependent(oD);
+			oD.open();
+		},
+
+		//function for sorting with view setting dialog
+		onConfirmSorting: function (oEvent) {
+			var oTable = this.byId("mTblPrdId"),
+				mParams = oEvent.getParameters(),
+				oBinding = oTable.getBinding("items"),
+				sPath,
+				bDescending,
+				aSorters = [],
+				aGroups = [];
+
+			//Getting a defined key
+			sPath = mParams.sortItem.getKey();
+			//Getting the desc or asc from the control
+			bDescending = mParams.sortDescending;
+			//Push the values to array
+			aSorters.push(new sap.ui.model.Sorter(sPath, bDescending));
+			//apply the selected sort settings
+			oBinding.sort(aSorters);
+
+			//Grouping
+			var oGroup = {
+				SupplierName: function (oContext) {
+					var name = oContext.getProperty("SupplierName");
+					return {
+						key: name,
+						text: name.toUpperCase()
+					};
+				},
+				Category: function (oContext) {
+					var name = oContext.getProperty("Category");
+					return {
+						key: name,
+						text: name.toUpperCase()
+					};
+				}
+			};
+
+			//checking the grouping field
+			if (mParams.groupItem) {
+				sPath = mParams.groupItem.getKey();
+				bDescending = mParams.groupDescending;
+				aGroups.push(new sap.ui.model.Sorter(sPath, bDescending, oGroup[sPath]));
+				// apply the selected group settings
+				oBinding.sort(aGroups);
+			}
 		}
 
 	});
