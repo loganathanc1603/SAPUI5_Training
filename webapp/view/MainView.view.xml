@@ -1,5 +1,11 @@
-<mvc:View controllerName="com.ui5.SAPUI5_Session.controller.MainView" xmlns:mvc="sap.ui.core.mvc" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:l="sap.ui.layout" xmlns:t="sap.ui.table" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
+<mvc:View controllerName="com.ui5.SAPUI5_Session.controller.MainView" 
+xmlns:mvc="sap.ui.core.mvc" 
+xmlns:html="http://www.w3.org/1999/xhtml"
+xmlns:l="sap.ui.layout" 
+xmlns:t="sap.ui.table" 
+xmlns:f="sap.ui.layout.form" 
+xmlns:Custom="com.ui5.SAPUI5_Session.customControl"
+xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 	<!--<App id="idAppControl">-->
 	<!--	<pages>-->
 	<!-- Example of resourcebundle binding using i18n resource model -->
@@ -25,6 +31,8 @@
 							<core:Item text="{Product>Name}"/>
 						</suggestionItems>
 					</Input>
+					<Label text="Custom Control" design="Bold"/>
+					<Custom:Rating id="rating" class="sapUiSmallMarginBeginEnd" change="onRatingChange"/>
 				</f:content>
 			</f:SimpleForm>
 			<!-- Example for aggreagation binding using jsonmodel-->

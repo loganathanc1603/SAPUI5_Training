@@ -1,3 +1,4 @@
+var jsPDF;
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"com/ui5/SAPUI5_Session/controller/BaseController",
@@ -8,7 +9,10 @@ sap.ui.define([
 	"sap/ui/model/Filter",
 	"sap/ui/model/FilterOperator",
 	"sap/ui/model/json/JSONModel",
-	"sap/m/MessageBox"
+	"sap/m/MessageBox",
+	"com/ui5/SAPUI5_Session/utilities/jspdf.debug",
+	"com/ui5/SAPUI5_Session/utilities/jspdf",
+	"com/ui5/SAPUI5_Session/utilities/jspdf.plugin.autotable"
 ], function (Controller, BaseController, History, formatter, typeString, Token, Filter, FilterOperator, JSONModel, MessageBox) {
 	"use strict";
 
@@ -216,6 +220,79 @@ sap.ui.define([
 				// apply the selected group settings
 				oBinding.sort(aGroups);
 			}
+		},
+
+		createColumnConfig: function () {
+			var aCols = [];
+
+			aCols.push({
+				label: "Product Id",
+				property: ["ProductID"],
+				type: "string"
+			});
+
+			aCols.push({
+				label: 'Name',
+				type: 'string',
+				property: 'Name',
+				scale: 0
+			});
+
+			return aCols;
+		},
+
+		//downloading the products data on excel spreadsheet
+		onExport: function () {},
+
+		//downloading the PDF Documents for products
+		onExportPDF: function () {
+			var ProductData = [],
+				oKeys = this.byId("mTblPrdId").getBindingContext("items").aKeys,
+				aColumns = ["ProductID", "ProductName", "Category", "SupplierName", "Price"],
+				rawData = [];
+
+			//getting items data
+			for (var i = 0; i < oKeys.length; i++) {
+				var value = this.oDataModel.getProperty("/" + oKeys[i]);
+				ProductData.push(value);
+			}
+
+			//pdf format data 
+			for (var j = 0; j < ProductData.length; j++) {
+				rawData[j] = [ProductData[j].ProductID,
+					ProductData[j].Name,
+					ProductData[j].Category,
+					ProductData[j].SupplierName,
+					ProductData[j].Price
+				];
+			}
+
+			var getImageFromUrl = function (url, callback) {
+				var img = new Image();
+				img.onError = function () {
+					sap.m.MessageToast('Cannot load image: "' + url + '"');
+				};
+				img.onload = function () {
+					callback(img);
+				};
+				img.src = url;
+			};
+
+			var createPDF = function (imgData) {
+				var doc = new jsPDF("l", "pt", "a4");
+				doc.addImage(imgData, 'PNG', 90, 5, 1024, 65, 'SAPUI5');
+				doc.text("Product Information", 45, 100, {
+					contentWidth: 9
+				});
+				doc.autoTable(aColumns, rawData, {
+					margin: {
+						top: 120
+					}
+				});
+				doc.save("Products");
+			};
+			var RootPath = jQuery.sap.getModulePath("com.ui5.SAPUI5_Session");
+			getImageFromUrl(RootPath + "/media/SliderImage.png", createPDF);
 		}
 
 	});

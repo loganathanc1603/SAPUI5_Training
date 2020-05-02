@@ -23,11 +23,8 @@
 				</fb:filterGroupItems>
 			</fb:FilterBar>
 			<!--, filters:[{path:'SubCategoryId', operator:'EQ', value1:'Notebooks'}]-->
-			<Table id="mTblPrdId" mode="SingleSelectLeft" 
-				selectionChange="onSelectionChange"
-				items="{ path:'/ProductSet'}"
-				growing="true" growingThreshold="50"
-				alternateRowColors="true" updateFinished="fnUpdateFinshed">
+			<Table id="mTblPrdId" mode="SingleSelectLeft" selectionChange="onSelectionChange" items="{ path:'/ProductSet'}" growing="true"
+				growingThreshold="50" alternateRowColors="true" updateFinished="fnUpdateFinshed">
 				<!--headerToolber table aggreagation-->
 				<headerToolbar>
 					<Toolbar>
@@ -37,6 +34,7 @@
 							<Button text="Create" press="onPrsBtnAddProducts"/>
 							<Button text="Delete" enabled="{LocalModel>/deleteBtnEnable}" press="onPrsBtnDeleteProducts"/>
 							<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
+							<Button icon="sap-icon://pdf-attachment" press="onExportPDF" tooltip="PDF download"/>
 						</content>
 					</Toolbar>
 				</headerToolbar>

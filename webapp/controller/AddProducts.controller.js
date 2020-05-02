@@ -11,7 +11,6 @@ sap.ui.define([
 		onInit: function () {
 			//creating global variable for odata model instance
 			this.oDataModel = this.getOwnerComponent().getModel();
-			this.oDataModel.setSizeLimit(1000);
 			//Local Jsonmodel
 			this.LocalModel = new JSONModel({
 				iBusy: false,
@@ -43,7 +42,7 @@ sap.ui.define([
 		//function for changing the selection option of BP
 		onSelectChangeBP: function (evt) {
 			var sPath = evt.getParameter("selectedItem").getBindingContext().getPath();
-		
+
 			this.byId("mIpBPName").bindElement({
 				path: sPath
 			});
@@ -53,8 +52,9 @@ sap.ui.define([
 		onPrsBtnSave: function () {
 			var oEntitySet = "/ProductSet",
 				PayloadObj = {},
-				View = this.getView();
-			
+				View = this.getView(),
+				RegExp = /^\d+$/;
+
 			PayloadObj.ProductID = View.byId("mIpPrdId").getValue();
 			PayloadObj.Name = View.byId("mIpPrdName").getValue();
 			PayloadObj.Description = View.byId("mIpPrdDesc").getValue();
@@ -82,7 +82,12 @@ sap.ui.define([
 				View.byId("mIpPrdId").setValueState("None");
 				View.byId("mIpPrdId").setValueStateText(null);
 			}
-			
+
+			if (RegExp.test(PayloadObj.TaxTarifCode)) {
+				MessageBox.show("Please provide the valid TaxTarifCode.", MessageBox.Icon.ERROR, "Error");
+				return;
+			}
+
 			View.setBusy(true);
 			//calling create method to POST the data to backend
 			this.oDataModel.create(oEntitySet, PayloadObj, {

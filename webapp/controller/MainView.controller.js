@@ -164,7 +164,13 @@ sap.ui.define([
 			this.getRouter().navTo("SecondView", {
 				Obj: "Test"
 			}, true);
-		}
+		},
+
+		onRatingChange: function (oEvent) {
+			var fValue = oEvent.getParameter("value");
+			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();
+			sap.m.MessageToast.show(oResourceBundle.getText("ratingConfirmation", [fValue]));
+		},
 
 	});
 });
