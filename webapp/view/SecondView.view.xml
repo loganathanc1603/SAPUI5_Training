@@ -35,6 +35,7 @@
 							<Button text="Delete" enabled="{LocalModel>/deleteBtnEnable}" press="onPrsBtnDeleteProducts"/>
 							<Button icon="sap-icon://sort" press="onPrsSortDialog" tooltip="Sort the products"/>
 							<Button icon="sap-icon://pdf-attachment" press="onExportPDF" tooltip="PDF download"/>
+							<Button icon="sap-icon://excel-attachment" press="onExportExcel" tooltip="Excel download"/>
 						</content>
 					</Toolbar>
 				</headerToolbar>

@@ -172,5 +172,9 @@ sap.ui.define([
 			sap.m.MessageToast.show(oResourceBundle.getText("ratingConfirmation", [fValue]));
 		},
 
+		Ondblclick: function (evt) {
+			sap.m.MessageBox.alert("Double click event triggered");
+		}
+
 	});
 });

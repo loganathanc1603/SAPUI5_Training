@@ -242,12 +242,32 @@ sap.ui.define([
 		},
 
 		//downloading the products data on excel spreadsheet
-		onExport: function () {},
+		onExportExcel: function () {
+			var ProductData = [],
+				oKeys = this.byId("mTblPrdId").getBinding("items").aKeys,
+				sN = [],
+				Ti = "Products",
+				Sub = "Products",
+				Authr = "Test",
+				fData = [],
+				dwnLdTitle = "ProductsData";
+
+			//getting items data
+			for (var i = 0; i < oKeys.length; i++) {
+				var value = this.oDataModel.getProperty("/" + oKeys[i]);
+				ProductData.push(value);
+			}
+
+			var bType = "xlsx";
+			sN.push("Products Data");
+			fData.push(ProductData);
+			this.downloadAsExcel(sN, dwnLdTitle, Ti, Sub, Authr, fData, bType);
+		},
 
 		//downloading the PDF Documents for products
 		onExportPDF: function () {
 			var ProductData = [],
-				oKeys = this.byId("mTblPrdId").getBindingContext("items").aKeys,
+				oKeys = this.byId("mTblPrdId").getBinding("items").aKeys,
 				aColumns = ["ProductID", "ProductName", "Category", "SupplierName", "Price"],
 				rawData = [];
 

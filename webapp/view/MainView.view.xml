@@ -5,6 +5,7 @@ xmlns:l="sap.ui.layout"
 xmlns:t="sap.ui.table" 
 xmlns:f="sap.ui.layout.form" 
 xmlns:Custom="com.ui5.SAPUI5_Session.customControl"
+xmlns:Btn="com.ui5.SAPUI5_Session.customControl"
 xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 	<!--<App id="idAppControl">-->
 	<!--	<pages>-->
@@ -33,6 +34,8 @@ xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 					</Input>
 					<Label text="Custom Control" design="Bold"/>
 					<Custom:Rating id="rating" class="sapUiSmallMarginBeginEnd" change="onRatingChange"/>
+					<Label text="Extending the Button" design="Bold"/>
+					<Btn:ButtonExt text="Custom Events Enabled Button" ondblclick="Ondblclick"></Btn:ButtonExt>
 				</f:content>
 			</f:SimpleForm>
 			<!-- Example for aggreagation binding using jsonmodel-->
