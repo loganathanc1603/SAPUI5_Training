@@ -31,6 +31,17 @@ sap.ui.define([
 					return "Warning";
 				}
 			}
-		}
+		},
+
+		businesRoleStatus: function (oValue) {
+			if (parseInt(oValue) < 2) {
+				return "Error";
+			} else if (parseInt(oValue) < 3) {
+				return "Warning";
+			} else if (parseInt(oValue) < 5) {
+				return "None";
+			}
+			return "Success";
+		},
 	};
 });

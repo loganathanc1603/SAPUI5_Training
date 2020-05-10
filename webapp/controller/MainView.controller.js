@@ -166,6 +166,11 @@ sap.ui.define([
 			}, true);
 		},
 
+		//function for nav to smart control page
+		onPrsBtnSmartCtrl: function () {
+			this.getRouter().navTo("SmartControls", {}, true);
+		},
+
 		onRatingChange: function (oEvent) {
 			var fValue = oEvent.getParameter("value");
 			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();

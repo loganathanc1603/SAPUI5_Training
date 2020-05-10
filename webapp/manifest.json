@@ -18,7 +18,17 @@
 				"uri": "/ES5/sap/opu/odata/iwbep/GWSAMPLE_BASIC/",
 				"type": "OData",
 				"settings": {
-					"localUri": "localService/GWSAMPLE_BASIC/metadata.xml"
+					"localUri": "localService/GWSAMPLE_BASIC/metadata.xml",
+					"annotations": [
+						"A1"
+					]
+				}
+			},
+			"A1": {
+				"type": "ODataAnnotation",
+				"uri": "localService/A1.xml",
+				"settings": {
+					"localUri": "localService/A1.xml"
 				}
 			}
 		}
@@ -84,6 +94,10 @@
 				},
 				"dataSource": "GWSAMPLE_BASIC",
 				"preload": true
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
 			}
 		},
 		"resources": {
@@ -143,6 +157,15 @@
 					"target": [
 						"ProductDisplayAndEdit"
 					]
+				},
+				{
+					"name": "SmartControls",
+					"pattern": "SmartControls",
+					"titleTarget": "",
+					"greedy": false,
+					"target": [
+						"SmartControls"
+					]
 				}
 			],
 			"targets": {
@@ -188,6 +211,15 @@
 					"viewLevel": 5,
 					"controlAggregation": "pages",
 					"controlId": "mAppId"
+				},
+				"SmartControls": {
+					"viewType": "XML",
+					"viewName": "SmartControls",
+					"viewId": "SmartControls",
+					"viewLevel": 4,
+					"controlAggregation": "pages",
+					"controlId": "mAppId",
+					"title": "{i18n>smartTitle}"
 				}
 			}
 		}

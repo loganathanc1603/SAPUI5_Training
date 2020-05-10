@@ -1,0 +1,54 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+xmlns:smartFilterBar="sap.ui.comp.smartfilterbar"
+xmlns:smartTable="sap.ui.comp.smarttable" controllerName="com.ui5.SAPUI5_Session.controller.SmartControls"
+xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="{i18n>smartTitle}" showNavButton="true" navButtonPress="onPrsNavBtn">
+		<content>
+			<smartFilterBar:SmartFilterBar 
+				id="smartFilterBar" useToolbar="true" entitySet="BusinessPartnerSet" enableBasicSearch="true"
+				basicSearchFieldName="CompanyName">
+			</smartFilterBar:SmartFilterBar>
+			<smartTable:SmartTable 
+				id="BusinessPartnerTblId" 
+				entitySet="BusinessPartnerSet" 
+				smartFilterId="smartFilterBar" 
+				tableType="ResponsiveTable"
+				useExportToExcel="true" 
+				showFullScreenButton="true"
+				beforeExport="onBeforeExport" 
+				header="Business Partners" 
+				showRowCount="true" 
+				beforeRebindTable="fnOnBeforeRebind"
+				useTablePersonalisation="true" 
+				enableAutoBinding="true"
+				ignoreFromPersonalisation="CreatedAt,ChangedAt"
+				initiallyVisibleFields="EmailAddress"
+				class="sapUiResponsiveContentPadding">
+			<Table growing="true" growingThreshold="100" sticky="ColumnHeaders,HeaderToolbar">
+				<columns>
+					<Column>
+						<Label text="Business Partner Role"/>
+						<customData>
+							<core:CustomData key="p13nData"
+								value='\{"columnKey": "BusinessPartnerRole", "maxLength": "3",
+								"columnIndex":"2", 
+								"leadingProperty": "BusinessPartnerRole", 
+								"sortProperty": "BusinessPartnerRole", 
+								"type": "string"}' />
+						</customData>     
+					</Column>
+				</columns>
+				<items>
+				<ColumnListItem type="Active">
+					<cells>
+						<ObjectStatus
+							text="{BusinessPartnerRole}" 
+							state="{path:'BusinessPartnerRole',formatter:'.formatter.businesRoleStatus'}" />
+					</cells>
+				</ColumnListItem>
+			</items>
+			</Table>
+			</smartTable:SmartTable>
+		</content>
+	</Page>
+</mvc:View>

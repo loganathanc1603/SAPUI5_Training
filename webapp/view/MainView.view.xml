@@ -7,13 +7,12 @@ xmlns:f="sap.ui.layout.form"
 xmlns:Custom="com.ui5.SAPUI5_Session.customControl"
 xmlns:Btn="com.ui5.SAPUI5_Session.customControl"
 xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
-	<!--<App id="idAppControl">-->
-	<!--	<pages>-->
 	<!-- Example of resourcebundle binding using i18n resource model -->
 	<Page title="{i18n>title}">
 		<content>
 			<!-- Example for property binding using json model-->
-			<f:SimpleForm editable="true" layout="ResponsiveGridLayout" title="Product Information">
+			<Panel headerText="Product Information" expanded="true" expandable="true" width="auto" class="sapUiTinyMargin">
+			<f:SimpleForm editable="true" layout="ResponsiveGridLayout">
 				<f:content>
 					<Label text="{i18n>productId}" design="Bold"/>
 					<Text id="idTxt" text="{Product>/ProductDetails/ProductId}"/>
@@ -35,10 +34,12 @@ xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 					<Label text="Custom Control" design="Bold"/>
 					<Custom:Rating id="rating" class="sapUiSmallMarginBeginEnd" change="onRatingChange"/>
 					<Label text="Extending the Button" design="Bold"/>
-					<Btn:ButtonExt text="Custom Events Enabled Button" ondblclick="Ondblclick"></Btn:ButtonExt>
+					<Btn:ButtonExt text="Custom Events Enabled Button" ondblclick="Ondblclick" type="Reject" width="30%"></Btn:ButtonExt>
 				</f:content>
 			</f:SimpleForm>
+			</Panel>
 			<!-- Example for aggreagation binding using jsonmodel-->
+			<Panel headerText="Product Information [SAP M Table]" expanded="true" expandable="true" width="auto" class="sapUiTinyMargin">
 			<Table id="mTblPrdId" items="{Product>/ProductCollection}" growing="true" growingThreshold="50" alternateRowColors="true"
 				class="custCssClass">
 				<!--headerToolber table aggreagation-->
@@ -93,6 +94,8 @@ xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 					</ColumnListItem>
 				</items>
 			</Table>
+			</Panel>
+			<Panel headerText="Product Information [SAP UI Table]" expanded="true" expandable="true" width="auto" class="sapUiTinyMargin">
 			<t:Table id="uiTblProduct" rows="{Product>/ProductCollection}">
 				<t:columns>
 					<t:Column sortProperty="ProductId" filterProperty="ProductId">
@@ -143,10 +146,12 @@ xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 					</t:Column>
 				</t:columns>
 			</t:Table>
+			</Panel>
 		</content>
 		<footer>
 			<Toolbar>
-				<Button text="Nav To OData Model Page" type="Reject" press="onPrsBtnNavTo"/>
+				<Button text="Smart Controls" type="Emphasized" press="onPrsBtnSmartCtrl"/>
+				<Button text="OData Model" type="Reject" press="onPrsBtnNavTo"/>
 				<ToolbarSpacer/>
 				<Button text="Footer Button" type="Accept" press="onPrsBtnMsgBox"/>
 			</Toolbar>
