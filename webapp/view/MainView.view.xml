@@ -150,6 +150,7 @@ xmlns:core="sap.ui.core" displayBlock="true" xmlns="sap.m">
 		</content>
 		<footer>
 			<Toolbar>
+				<Button text="Viz Chart" type="Ghost" press="onPrsBtnVizChart"/>
 				<Button text="Smart Controls" type="Emphasized" press="onPrsBtnSmartCtrl"/>
 				<Button text="OData Model" type="Reject" press="onPrsBtnNavTo"/>
 				<ToolbarSpacer/>

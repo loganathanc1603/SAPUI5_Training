@@ -1,25 +1,37 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller",
-	"com/ui5/SAPUI5_Session/model/formatter"
-], function (Controller, formatter) {
+	"com/ui5/SAPUI5_Session/controller/BaseController",
+	"com/ui5/SAPUI5_Session/model/formatter",
+	"sap/ui/core/routing/History"
+], function (BaseController, formatter, History) {
 	"use strict";
 
-	return Controller.extend("com.ui5.SAPUI5_Session.controller.SmartControls", {
+	return BaseController.extend("com.ui5.SAPUI5_Session.controller.SmartControls", {
 		formatter: formatter,
-	
+
 		onInit: function () {
 
 		},
-		
-		fnOnBeforeRebind: function(evt){
+
+		onPrsNavBtn: function () {
+			var oHistory = History.getInstance();
+			var sPreviousHash = oHistory.getPreviousHash();
+
+			if (sPreviousHash !== undefined) {
+				window.history.go(-1);
+			} else {
+				var oRouter = this.getRouter();
+				oRouter.navTo("MainView", {}, true);
+			}
+		},
+
+		fnOnBeforeRebind: function (evt) {
 			var Obj = evt;
 		},
-		
-		onPrsNavBusi: function(evt){
+
+		onPrsNavBusi: function (evt) {
 			var sPath = evt.getSource().getBindingContextPath();
 			this.getView().byId("smartFormId").bindElement(sPath);
 		}
-
 
 	});
 

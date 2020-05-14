@@ -19,9 +19,7 @@
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/GWSAMPLE_BASIC/metadata.xml",
-					"annotations": [
-						"A1"
-					]
+					"annotations": ["A1"]
 				}
 			},
 			"A1": {
@@ -48,10 +46,7 @@
 			"tablet": true,
 			"phone": true
 		},
-		"supportedThemes": [
-			"sap_hcb",
-			"sap_belize"
-		]
+		"supportedThemes": ["sap_hcb", "sap_belize"]
 	},
 	"sap.ui5": {
 		"rootView": {
@@ -98,14 +93,18 @@
 			"@i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"uri": "i18n/i18n.properties"
+			},
+			"COVID19": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "model/Covid19Data.json",
+				"preload": false
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
@@ -118,56 +117,44 @@
 				"clearControlAggregation": false,
 				"viewLevel": 1,
 				"bypassed": {
-					"target": [
-						"PageNotFound"
-					]
+					"target": ["PageNotFound"]
 				}
 			},
-			"routes": [
-				{
-					"name": "MainView",
-					"pattern": "",
-					"target": [
-						"MainView"
-					]
-				},
-				{
-					"name": "SecondView",
-					"pattern": "SecondView/(:Obj:)",
-					"titleTarget": "",
-					"greedy": false,
-					"target": [
-						"SecondView"
-					]
-				},
-				{
-					"name": "AddProducts",
-					"pattern": "AddProducts",
-					"titleTarget": "",
-					"greedy": false,
-					"target": [
-						"AddProducts"
-					]
-				},
-				{
-					"name": "ProductDisplayAndEdit",
-					"pattern": "ProductEdit/{ProductPath}",
-					"titleTarget": "",
-					"greedy": false,
-					"target": [
-						"ProductDisplayAndEdit"
-					]
-				},
-				{
-					"name": "SmartControls",
-					"pattern": "SmartControls",
-					"titleTarget": "",
-					"greedy": false,
-					"target": [
-						"SmartControls"
-					]
-				}
-			],
+			"routes": [{
+				"name": "MainView",
+				"pattern": "",
+				"target": ["MainView"]
+			}, {
+				"name": "SecondView",
+				"pattern": "SecondView/(:Obj:)",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["SecondView"]
+			}, {
+				"name": "AddProducts",
+				"pattern": "AddProducts",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["AddProducts"]
+			}, {
+				"name": "ProductDisplayAndEdit",
+				"pattern": "ProductEdit/{ProductPath}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["ProductDisplayAndEdit"]
+			}, {
+				"name": "SmartControls",
+				"pattern": "SmartControls",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["SmartControls"]
+			}, {
+				"name": "VizFrameChart",
+				"pattern": "VizFrameChart",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["VizFrameChart"]
+			}],
 			"targets": {
 				"MainView": {
 					"viewType": "XML",
@@ -220,6 +207,14 @@
 					"controlAggregation": "pages",
 					"controlId": "mAppId",
 					"title": "{i18n>smartTitle}"
+				},
+				"VizFrameChart": {
+					"viewType": "XML",
+					"viewName": "VizFrameChart",
+					"viewId": "VizFrameChart",
+					"viewLevel": 5,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
 				}
 			}
 		}

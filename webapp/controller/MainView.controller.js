@@ -171,6 +171,10 @@ sap.ui.define([
 			this.getRouter().navTo("SmartControls", {}, true);
 		},
 
+		onPrsBtnVizChart: function () {
+			this.getRouter().navTo("VizFrameChart", {}, true);
+		},
+
 		onRatingChange: function (oEvent) {
 			var fValue = oEvent.getParameter("value");
 			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();

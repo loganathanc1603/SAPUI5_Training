@@ -1,0 +1,51 @@
+<mvc:View xmlns:core="sap.ui.core" 
+xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m"
+xmlns:viz="sap.viz.ui5.controls"
+xmlns:viz.feeds="sap.viz.ui5.controls.common.feeds"
+xmlns:viz.data="sap.viz.ui5.data"
+controllerName="com.ui5.SAPUI5_Session.controller.VizFrameChart" 
+xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Viz Frame Chart" showNavButton="true" navButtonPress="onPrsNavBtn">
+		<content>
+			 <Panel id='settingsPanel' class="panelStyle" expandable="true" expanded="true" headerText="Settings" width="auto">
+                <content>
+                    <HBox class='settingsHBox'>
+                    <VBox width="200px">
+                        <Label text = "Change Values" design="Bold"></Label>
+                    	<Switch state="false" change="onChangeSwitch"></Switch>
+                    </VBox>
+                    <VBox width="200px">
+                        <Label text = "Change Chart Type" design="Bold"></Label>
+                    	<!--<select -->
+                    </VBox>
+                    </HBox>
+                </content>
+            </Panel>
+			 <viz:Popover id="idPopOver"></viz:Popover>
+			 <viz:VizFrame vizProperties="{title:{text:'COVID-19 Data'}}" id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
+                height='100%' width="100%" vizType='line'>
+                <viz:dataset>
+                    <viz.data:FlattenedDataset data="{COVID19>/Countries}">
+                        <viz.data:dimensions>
+                            <viz.data:DimensionDefinition name="Country"
+                                value="{Country}" />
+                        </viz.data:dimensions>
+                        <viz.data:measures>
+                        	<viz.data:MeasureDefinition name="TotalRecovered"
+                                value="{TotalRecovered}" />
+                            <viz.data:MeasureDefinition name="TotalConfirmed"
+                                value="{TotalConfirmed}" />
+                        </viz.data:measures>
+                    </viz.data:FlattenedDataset>
+                </viz:dataset>
+
+                <viz:feeds>
+                    <viz.feeds:FeedItem id='valueAxisFeed' uid="valueAxis" type="Measure"
+                        values="TotalConfirmed" />
+                    <viz.feeds:FeedItem id='categoryAxisFeed' uid="categoryAxis" type="Dimension"
+                        values="Country" />
+                </viz:feeds>
+            </viz:VizFrame>
+		</content>
+	</Page>
+</mvc:View>

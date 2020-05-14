@@ -26,8 +26,7 @@ xmlns:html="http://www.w3.org/1999/xhtml">
 				beforeRebindTable="fnOnBeforeRebind"
 				useTablePersonalisation="true" 
 				enableAutoBinding="true"
-				ignoreFromPersonalisation="CreatedAt,ChangedAt"
-				initiallyVisibleFields="EmailAddress">
+				ignoreFromPersonalisation="CreatedAt,ChangedAt">
 			<Table growing="true" growingThreshold="20" sticky="ColumnHeaders,HeaderToolbar">
 				<columns>
 					<Column>

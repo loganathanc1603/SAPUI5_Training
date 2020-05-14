@@ -12,7 +12,8 @@
 					<Collection>
 						<PropertyPath>BusinessPartnerID</PropertyPath>
 						<PropertyPath>CurrencyCode</PropertyPath>
-						<PropertyPath >CompanyName</PropertyPath>
+						<PropertyPath>CompanyName</PropertyPath>
+						<PropertyPath >EmailAddress</PropertyPath>
 					</Collection>
 				</Annotation>
 				<Annotation Term="UI.LineItem">
@@ -31,6 +32,9 @@
 						</Record>
 						<Record Type="UI.DataField">
 							<PropertyValue Property="Value" Path="PhoneNumber"/>
+						</Record>
+						<Record Type="UI.DataField">
+							<PropertyValue Property="Value" Path="EmailAddress"/>
 						</Record>
 					</Collection>
 				</Annotation>
