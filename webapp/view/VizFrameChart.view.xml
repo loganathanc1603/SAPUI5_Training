@@ -16,16 +16,22 @@ xmlns:html="http://www.w3.org/1999/xhtml">
                     </VBox>
                     <VBox width="200px">
                         <Label text = "Change Chart Type" design="Bold"></Label>
-                    	<!--<select -->
+	                    <Select id="mSelChartTy" items="{LocalModel>/ChartType}" change="onSelectionChange">
+	                    	<core:Item key="{LocalModel>Key}" text="{LocalModel>Text}"></core:Item>
+	                    </Select>
+                    </VBox>
+                    <VBox width="200px">
+                        <Label text = "Value Label" design="Bold"></Label>
+	                    <Switch state="true" change="onDataLabelChanged"></Switch>
                     </VBox>
                     </HBox>
                 </content>
             </Panel>
 			 <viz:Popover id="idPopOver"></viz:Popover>
 			 <viz:VizFrame vizProperties="{title:{text:'COVID-19 Data'}}" id="idVizFrame" uiConfig="{applicationSet:'fiori'}"
-                height='100%' width="100%" vizType='line'>
+                height='70%' width="100%" vizType='column'>
                 <viz:dataset>
-                    <viz.data:FlattenedDataset data="{COVID19>/Countries}">
+                    <viz.data:FlattenedDataset data="{LocalModel>/VizData}">
                         <viz.data:dimensions>
                             <viz.data:DimensionDefinition name="Country"
                                 value="{Country}" />

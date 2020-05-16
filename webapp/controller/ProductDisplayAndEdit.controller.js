@@ -19,9 +19,10 @@ sap.ui.define([
 			this.oDataModel = this.getOwnerComponent().getModel();
 			this.ProductPath = "/" + evt.getParameter("arguments").ProductPath;
 			this.getView().bindElement(this.ProductPath, {
-				expand: "ToSupplier,ToSalesOrderLineItems"
+				expand: "ToSupplier"
 			});
-
+			// this.byId("mTblPrdId").bindElement(this.ProductPath + "/ToSalesOrderLineItems");
+			this.setSalesData();
 			//Local Json model
 			this.LocalModel = new JSONModel({
 				iBusy: false,
@@ -32,6 +33,33 @@ sap.ui.define([
 				cancelBtn: false
 			});
 			this.getView().setModel(this.LocalModel, "LocalModel");
+		},
+
+		setSalesData: function () {
+			var oTable = this.byId("mTblPrdId");
+			var oTemplate = new sap.m.ColumnListItem({
+				cells: [
+					new sap.m.Text({
+						text: "{SalesOrderID}"
+					}),
+					new sap.m.Text({
+						text: "{Note}"
+					}),
+					new sap.m.Text({
+						text: "{ItemPosition}"
+					}), new sap.m.Text({
+						text: "{GrossAmount}"
+					}),
+				]
+			});
+
+			oTable.bindItems({
+				path: this.ProductPath + "/ToSalesOrderLineItems",
+				template: oTemplate
+					// parameters: {
+					// 	expand: "ToSalesOrderLineItems"
+					// },
+			});
 		},
 
 		//function for changing the selection option of BP
