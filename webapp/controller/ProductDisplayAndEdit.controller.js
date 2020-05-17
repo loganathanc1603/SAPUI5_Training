@@ -21,7 +21,6 @@ sap.ui.define([
 			this.getView().bindElement(this.ProductPath, {
 				expand: "ToSupplier"
 			});
-			// this.byId("mTblPrdId").bindElement(this.ProductPath + "/ToSalesOrderLineItems");
 			this.setSalesData();
 			//Local Json model
 			this.LocalModel = new JSONModel({
@@ -37,6 +36,7 @@ sap.ui.define([
 
 		setSalesData: function () {
 			var oTable = this.byId("mTblPrdId");
+			// Making the Columnlist item template on javascript
 			var oTemplate = new sap.m.ColumnListItem({
 				cells: [
 					new sap.m.Text({
@@ -56,9 +56,6 @@ sap.ui.define([
 			oTable.bindItems({
 				path: this.ProductPath + "/ToSalesOrderLineItems",
 				template: oTemplate
-					// parameters: {
-					// 	expand: "ToSalesOrderLineItems"
-					// },
 			});
 		},
 
@@ -98,58 +95,21 @@ sap.ui.define([
 		},
 
 		onPrsSaveProduct: function () {
-			var oModel = this.getOwnerComponent().getModel("NWDB");
-			var obj = {
-				"ID": 1,
-				"Name": "Tokyo Traders",
-				"Address": {
-					"Street": "NE 40th",
-					"City": "Redmond",
-					"State": "WA",
-					"ZipCode": "98052",
-					"Country": "USA"
-				}
-			};
-
-			obj.Products = [{
-				"ID": 9,
-				"Name": "Bread",
-				"Description": "Whole grain bread",
-				"ReleaseDate": new Date(),
-				"DiscontinuedDate": null,
-				"Rating": 4,
-				"Price": "2.5"
-			}];
-
-			oModel.create("/Suppliers", obj, {
-				success: function (oData) {
-					var d = oData;
-				},
-				error: function (err) {
-					var e = err;
-				}
-			});
-		},
-
-		onPrsSaveProduct1: function () {
 			var oModel = this.oDataModel;
-			if (this.oDataModel.hasPendingChanges()) {
-				this.LocalModel.setProperty("/iBusy", true);
-				var mSettings = {
-					groupId: "changes",
-					success: function () {
-						this.LocalModel.setProperty("/iBusy", false);
-						MessageBox.show("Product Update Successfully.", MessageBox.Icon.SUCCESS, "Success");
-						this.onPrsBtnCancel();
-					}.bind(this),
-					error: function () {
-						this.LocalModel.setProperty("/iBusy", false);
-					}.bind(this)
-				};
-				oModel.submitChanges(mSettings);
-			} else {
-				MessageBox.show("No change found for update.", MessageBox.Icon.ERROR, "Error");
-			}
+			var oPayloadObj = oModel.getProperty(this.ProductPath);
+			delete oPayloadObj.ToSupplier;
+			delete oPayloadObj.ToSalesOrderLineItems;
+			this.LocalModel.setProperty("/iBusy", true);
+			oModel.update(this.ProductPath, oPayloadObj, {
+				success: function (oData) {
+					this.LocalModel.setProperty("/iBusy", false);
+					MessageBox.show("Product Updated Successfully.", MessageBox.Icon.SUCCESS, "Success");
+				}.bind(this),
+				error: function (err) {
+					this.LocalModel.setProperty("/iBusy", false);
+					MessageBox.show("Product Update Failed.", MessageBox.Icon.ERROR, "Error");
+				}.bind(this)
+			});
 		}
 
 	});
