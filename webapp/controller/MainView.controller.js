@@ -175,6 +175,10 @@ sap.ui.define([
 			this.getRouter().navTo("VizFrameChart", {}, true);
 		},
 
+		onPrsBtnTreeTable: function () {
+			this.getRouter().navTo("TreeTable", {}, true);
+		},
+
 		onRatingChange: function (oEvent) {
 			var fValue = oEvent.getParameter("value");
 			var oResourceBundle = this.getView().getModel("i18n").getResourceBundle();

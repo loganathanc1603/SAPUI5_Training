@@ -49,7 +49,7 @@ sap.ui.define([
 						text: "{ItemPosition}"
 					}), new sap.m.Text({
 						text: "{GrossAmount}"
-					}),
+					})
 				]
 			});
 
@@ -103,6 +103,7 @@ sap.ui.define([
 			oModel.update(this.ProductPath, oPayloadObj, {
 				success: function (oData) {
 					this.LocalModel.setProperty("/iBusy", false);
+					this.onPrsBtnCancel();
 					MessageBox.show("Product Updated Successfully.", MessageBox.Icon.SUCCESS, "Success");
 				}.bind(this),
 				error: function (err) {

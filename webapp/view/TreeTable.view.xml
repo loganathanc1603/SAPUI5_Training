@@ -1,0 +1,39 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc"
+xmlns="sap.m" 
+xmlns:Tree="sap.ui.table"
+xmlns:u="sap.ui.unified"
+controllerName="com.ui5.SAPUI5_Session.controller.TreeTable" xmlns:html="http://www.w3.org/1999/xhtml">
+	<Page title="Tree Table Example using JSONModel" showNavButton="true" navButtonPress="onPrsNavBtn">
+		<content>
+			<Tree:TreeTable id="TreeTableBasic" rows="{path:'ClothModel>/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="MultiToggle"
+				enableSelectAll="false" toggleOpenState="onExpand" ariaLabelledBy="title" visibleRowCount="21">
+				 <Tree:columns>
+                    <Tree:Column width="13rem">
+                        <Label text="Categories"/>
+                        <Tree:template>
+                            <Text text="{ClothModel>name}" wrapping="false" />
+                        </Tree:template>
+                    </Tree:Column>
+                    <Tree:Column width="9rem">
+                        <Label text="Price"/>
+                        <Tree:template>
+                            <u:Currency value="{ClothModel>amount}" currency="{ClothModel>currency}"/>
+                        </Tree:template>
+                    </Tree:Column>
+                    <Tree:Column width="11rem">
+                        <Label text="Size"/>
+                        <Tree:template>
+                            <Select
+                                    items="{path: 'ClothModel>/sizes', templateShareable: true}"
+                                    selectedKey="{ClothModel>size}"
+                                    visible="{= !!${ClothModel>size}}"
+                                    forceSelection="false">
+                                <core:Item key="{ClothModel>key}" text="{ClothModel>value}"/>
+                            </Select>
+                        </Tree:template>
+                    </Tree:Column>
+                </Tree:columns>
+			</Tree:TreeTable>
+		</content>
+	</Page>
+</mvc:View>

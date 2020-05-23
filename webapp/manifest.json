@@ -99,6 +99,12 @@
 				"settings": {},
 				"uri": "model/Covid19Data.json",
 				"preload": false
+			},
+			"ClothModel": {
+				"type": "sap.ui.model.json.JSONModel",
+				"settings": {},
+				"uri": "model/Clothing.json",
+				"preload": false
 			}
 		},
 		"resources": {
@@ -154,6 +160,12 @@
 				"titleTarget": "",
 				"greedy": false,
 				"target": ["VizFrameChart"]
+			}, {
+				"name": "TreeTable",
+				"pattern": "TreeTable",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["TreeTable"]
 			}],
 			"targets": {
 				"MainView": {
@@ -215,8 +227,20 @@
 					"viewLevel": 5,
 					"controlAggregation": "pages",
 					"controlId": "mAppId"
+				},
+				"TreeTable": {
+					"viewType": "XML",
+					"viewName": "TreeTable",
+					"viewId": "TreeTable",
+					"viewLevel": 8,
+					"controlAggregation": "pages",
+					"controlId": "mAppId"
 				}
 			}
 		}
+	},
+	"sap.platform.hcp": {
+		"uri": "webapp",
+		"_version": "1.1.0"
 	}
 }
