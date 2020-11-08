@@ -5,7 +5,12 @@ xmlns:u="sap.ui.unified"
 controllerName="com.ui5.SAPUI5_Session.controller.TreeTable" xmlns:html="http://www.w3.org/1999/xhtml">
 	<Page title="Tree Table Example using JSONModel" showNavButton="true" navButtonPress="onPrsNavBtn">
 		<content>
-			<Tree:TreeTable id="TreeTableBasic" rows="{path:'ClothModel>/catalog/clothing', parameters: {arrayNames:['categories']}}" selectionMode="MultiToggle"
+			<Tree:TreeTable id="TreeTableBasic" 
+				rows="{
+					path:'ClothModel>/catalog/clothing', 
+					parameters: {arrayNames:['categories']}
+				}" 
+				selectionMode="MultiToggle"
 				enableSelectAll="false" toggleOpenState="onExpand" ariaLabelledBy="title" visibleRowCount="21">
 				 <Tree:columns>
                     <Tree:Column width="13rem">
